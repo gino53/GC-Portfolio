@@ -3,7 +3,6 @@ import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import Linkedin from "./Linkedin.jsx";
 import Github from "./Github.jsx";
-import Map from "./Map";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
@@ -133,7 +132,6 @@ const Contact = () => {
           </Canvas>
         </Left>
         <Right>
-          <Map />
         </Right>
       </Container>
     </Section>

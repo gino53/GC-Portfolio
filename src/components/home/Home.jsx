@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Navbar from "../navbar/Navbar.jsx";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import Desk from "./Desk.jsx";
 
 const Section = styled.div`
@@ -34,7 +33,7 @@ const Container = styled.div`
 `;
 
 const Left = styled.div`
-  flex: 2;
+  flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,20 +105,20 @@ const Home = () => {
       <Navbar />
       <Container>
         <Left>
-          <Title>Think. Make. Solve.</Title>
-          <WhatWeDo>
-            <Line src="./img/line.png" />
-            <Subtitle>What we Do</Subtitle>
-          </WhatWeDo>
-          <Desc>
-            we enjoy creating delightful, human-centered digital experiences.
-          </Desc>
-          <Button>Learn More</Button>
-        </Left>
-        <Right>
-          <Canvas style={{ width: '600px', height: '600px' }}>
+          <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }}>
             <Desk />
           </Canvas>
+        </Left>
+        <Right>
+          <Title>Hello. Bonjour. Buongiorno. Привет.</Title>
+          <WhatWeDo>
+            <Line src="./img/line.png" />
+            <Subtitle>Welcome to my portfolio</Subtitle>
+          </WhatWeDo>
+          <Desc>
+            I enjoy creating websites, 3D experiences and music.
+          </Desc>
+          <Button>Learn More</Button>
         </Right>
       </Container>
     </Section>
