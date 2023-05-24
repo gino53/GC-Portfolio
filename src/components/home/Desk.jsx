@@ -43,7 +43,7 @@ const Desk = () => {
                 <Float rotationIntensity={0.4}>
                     <rectAreaLight width={2.5} height={1.65} intensity={65} color={'#24242d'} rotation={[-0.1, Math.PI, 0]} position={[0, 0.55, -1.15]} />
                     <primitive onClick={keyboardAudio} object={computer.scene} position={[0, -0.6, 0.15]} scale={[0.7, 0.7, 0.7]}>
-                        <Html transform wrapperClass='htmlScreen' distanceFactor={1.17} position={[-0.64, 1.52, -1.8]} rotation-x={-0.256}>
+                        <Html transform wrapperClass='htmlScreen' distanceFactor={1.17} position={[0.1, 1.52, -1.8]} rotation-x={-0.256}>
                             <iframe src='https://marble-r.vercel.app/' />
                         </Html>
                     </primitive>
