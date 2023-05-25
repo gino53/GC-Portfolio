@@ -22,12 +22,10 @@ const Section = styled.div`
 const Container = styled.div`
   height: 100%;
   scroll-snap-align: center;
-  width: 1400px;
   display: flex;
   justify-content: space-between;
 
   @media only screen and (max-width: 768px) {
-    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -67,7 +65,7 @@ const Line = styled.img`
 `;
 
 const Subtitle = styled.h2`
-  color: #da4ea2;
+  color: #8e74eb;
 `;
 
 const Desc = styled.p`
@@ -81,7 +79,7 @@ const Desc = styled.p`
 `;
 
 const Button = styled.button`
-  background-color: #da4ea2;
+  background-color: #8e74eb;
   color: white;
   font-weight: 500;
   width: 100px;
@@ -101,19 +99,18 @@ const Intro = styled.div`
   display: flex;
   align-items: start;
   background-color: rgb(255, 255, 255);
-  border-radius: 8px;
   margin: auto;
 `;
 
 const Text = styled.div`
   padding: 30px;
   color: #000000;
-  line-height: 2.5;
+  line-height: 3.5;
   z-index: 1;
 `;
 
 const Close = styled.button`
-  background-color: #da4ea2;
+  background-color: #8e74eb;
   color: white;
   font-weight: 500;
   width: 100px;
@@ -133,6 +130,10 @@ const Right = styled.div`
   flex: 2;
   position: relative;
   gap: 20px;
+  padding: 30px;
+  border-left: white solid 5px;
+  border-bottom: white solid 5px;
+  border-top: white solid 5px;
   @media only screen and (max-width: 768px) {
     flex: 1;
     width: 100%;
