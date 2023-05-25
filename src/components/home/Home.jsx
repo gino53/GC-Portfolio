@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Navbar from "../navbar/Navbar.jsx";
 import { Canvas } from "@react-three/fiber";
 import Desk from "./Desk.jsx";
+import { FaTimes } from 'react-icons/fa';
+import { Float, PresentationControls, useGLTF } from "@react-three/drei";
 
 const Section = styled.div`
   height: 100vh;
@@ -37,7 +39,6 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
 
   @media only screen and (max-width: 768px) {
     flex: 1;
@@ -48,6 +49,7 @@ const Left = styled.div`
 const Title = styled.h1`
   font-size: 74px;
   text-align: end;
+  font-family: 'Permanent Marker', cursive;
 
   @media only screen and (max-width: 768px) {
     text-align: center;
@@ -91,16 +93,36 @@ const Button = styled.button`
 `;
 
 const Intro = styled.div`
-  position: fixed;
-  top: 80%;
-  left: 80%;
-  width: 500px;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #000000;
-  padding: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: start;
+  background-color: rgb(255, 255, 255);
   border-radius: 8px;
-  margin: 20px;
+  margin: auto;
+`;
+
+const Text = styled.div`
+  padding: 30px;
+  color: #000000;
+  line-height: 2.5;
+  z-index: 1;
+`;
+
+const Close = styled.button`
+  background-color: #da4ea2;
+  color: white;
+  font-weight: 500;
+  width: 100px;
+  height: 100%;
+  padding: 10px;
+  border: none;
+  margin-left: 20px;
+  cursor: pointer;
+  z-index: 1;
 `;
 
 const Right = styled.div`
@@ -110,6 +132,7 @@ const Right = styled.div`
   align-items: end;
   flex: 2;
   position: relative;
+  gap: 20px;
   @media only screen and (max-width: 768px) {
     flex: 1;
     width: 100%;
@@ -117,11 +140,18 @@ const Right = styled.div`
 `;
 
 const Home = () => {
-  const [showText, setShowText] = useState(false);
+  const [isDivOpen, setIsDivOpen] = useState(false);
 
   const handleButtonClick = () => {
-    setShowText(!showText);
+    setIsDivOpen(true);
   };
+
+  const handleCloseClick = () => {
+    setIsDivOpen(false);
+  };
+
+  const guitare = useGLTF('https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/guitar/model.gltf')
+
 
   return (
     <Section id="home">
@@ -141,16 +171,31 @@ const Home = () => {
           <Desc>
             I enjoy creating websites, 3D experiences and music.
           </Desc>
-            <Button onClick={handleButtonClick}>Learn More</Button>
+          <Button onClick={handleButtonClick}>Learn More</Button>
+          {isDivOpen && (
+            <Intro>
+              <Text>
+                I am a passionate web developer, specialized in the creation of 3D sites.
+                With a solid experience in the field, I have acquired expertise in web development and the design of interactive and immersive sites.
+                I am constantly on the lookout for new technologies and innovative techniques to create unique and captivating online experiences.
+                In addition to my web development skills, I am also a musician in my spare time.
+                Music is another form of artistic expression that fascinates me.
+                I love exploring different musical genres and creating original compositions.
+                This musical creativity is reflected in my approach to web development, where I always seek to bring an artistic touch to my projects.
+              </Text>
+              <Canvas camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }} style={{ position: "absolute", top: 100, left: 100 }}>
+                <PresentationControls global rotation={[0.13, 0.1, 0]} polar={[0.2, 0.2]} azimuth={[- 1, 0.75]} config={{ mass: 2, tension: 400 }} snap={{ mass: 4, tension: 400 }}>
+                  <Float rotationIntensity={1}>
+                    <ambientLight intensity={1} />
+                    <primitive object={guitare.scene} position={[-2.3, -0.8, 0]} rotation={[-1, 0, 0.5]} scale={[4.5, 4.5, 4.5]} />
+                  </Float>
+                </PresentationControls>
+              </Canvas>
+              <Close onClick={handleCloseClick}><FaTimes /></Close>
+            </Intro>
+          )}
         </Right>
       </Container>
-      {showText && (
-              <Intro>
-                Je suis un développeur web passionné avec une expertise dans la création de sites web et la conception 3D. Ayant suivi des formations approfondies dans ces domaines, j'ai acquis des compétences solides et une compréhension approfondie des principes fondamentaux de la programmation, de la conception graphique et de l'expérience utilisateur.
-                En tant que développeur web, j'ai une grande capacité à transformer des idées créatives en réalité fonctionnelle. Je suis capable de travailler sur des projets complexes, en utilisant une variété de langages de programmation et de technologies web pour créer des sites web interactifs, réactifs et conviviaux.
-                Ma formation dans la conception 3D m'a permis d'être capable d'intégrer des éléments 3D dans des projets web, apportant ainsi une dimension immersive et captivante aux expériences en ligne.
-              </Intro>
-            )}
     </Section>
   );
 };

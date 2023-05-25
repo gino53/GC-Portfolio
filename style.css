@@ -9,9 +9,17 @@ body,
   background: ivory;
 }
 
-.htmlScreen iframe {
+.htmlComputer iframe {
   width: 1024px;
   height: 670px;
+  border: none;
+  border-radius: 20px;
+  background-color: #000000;
+}
+
+.htmlPhone iframe {
+  width: 540px;
+  height: 1040px;
   border: none;
   border-radius: 20px;
   background-color: #000000;
