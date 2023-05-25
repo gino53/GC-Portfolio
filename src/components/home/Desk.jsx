@@ -1,5 +1,4 @@
-import { TextureLoader } from 'three';
-import { Html, PresentationControls, useGLTF, Float, ContactShadows } from '@react-three/drei'
+import { Html, PresentationControls, useGLTF, Float } from '@react-three/drei'
 import React from 'react';
 import { Howl } from 'howler';
 
