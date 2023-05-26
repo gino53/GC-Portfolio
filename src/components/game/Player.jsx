@@ -1,8 +1,9 @@
-import { useKeyboardControls } from "@react-three/drei"
+import { PerspectiveCamera, RenderTexture, Text, useKeyboardControls } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { RigidBody, useRapier } from "@react-three/rapier"
 import { useState, useEffect, useRef } from "react"
 import * as THREE from 'three'
+import { TextureLoader } from 'three';
 import useGame from "./stores/useGame.jsx"
 
 export default function Player() {
@@ -119,10 +120,25 @@ export default function Player() {
         }
     })
 
-    return <RigidBody ref={body} colliders='ball' restitution={0.2} friction={1} linearDamping={0.5} angularDamping={0.5} position={[0, 1, 0]}>
+    const textRef = useRef();
+    useFrame(
+      (state) =>
+        (textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2)
+    );
+
+    return <RigidBody ref={body} colliders='ball' restitution={0.2} friction={1} linearDamping={0.5} angularDamping={0.5} position={[0, 1, 4]}>
+
         <mesh castShadow>
-            <icosahedronGeometry args={[0.3, 1]} />
-            <meshNormalMaterial flatShading />
-        </mesh>
+        <icosahedronGeometry args={[0.3, 1]} />
+            <meshStandardMaterial flatShading>
+        <RenderTexture attach="map">
+          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+          <color attach="background" args={["#dc9dcd"]} />
+          <Text ref={textRef} fontSize={3} color="#555">
+            GC
+          </Text>
+        </RenderTexture>
+      </meshStandardMaterial>
+    </mesh>
     </RigidBody>
 }
