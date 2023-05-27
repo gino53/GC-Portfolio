@@ -15,15 +15,16 @@ export default function Lights() {
             ref={light}
             castShadow
             position={[4, 4, 1]}
-            intensity={1.5}
-            shadow-mapSize={[1024, 1024]}
+            intensity={1}
+            shadow-mapSize={[4096, 4096]}
             shadow-camera-near={1}
-            shadow-camera-far={10}
-            shadow-camera-top={10}
-            shadow-camera-right={10}
-            shadow-camera-bottom={- 10}
-            shadow-camera-left={- 10}
+            shadow-camera-far={20}
+            shadow-camera-top={20}
+            shadow-camera-right={20}
+            shadow-camera-bottom={-20}
+            shadow-camera-left={-20}
         />
+
         <ambientLight intensity={0.5} />
     </>
 }

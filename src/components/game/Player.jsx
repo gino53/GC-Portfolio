@@ -32,7 +32,21 @@ export default function Player() {
         }
     }
 
+    const reset = () => {
+        body.current.setTranslation({ x: 0, y: 1, z: 0 })
+        body.current.setLinvel({ x: 0, y: 0, z: 0 })
+        body.current.setAngvel({ x: 0, y: 0, z: 0 })
+    }
+
     useEffect(() => {
+        const unsubscribeReset = useGame.subscribe(
+            (state) => state.phase,
+            (value) => {
+                if (value === 'ready') {
+                    reset()
+                }
+            }
+        )
 
         const unsubscribeJump = subscribeKeys(
             (state) => state.jump,
@@ -48,6 +62,7 @@ export default function Player() {
         })
 
         return () => {
+            unsubscribeReset()
             unsubscribeJump()
             unsubscribeAny()
         }
@@ -111,8 +126,8 @@ export default function Player() {
         /**
          * Phases
          */
-        if (bodyPosition.z < - (blocksCount * 4 + 2)) {
-            end()
+        if (bodyPosition.z < -14 && bodyPosition.y < 15) {
+            end();
         }
 
         if (bodyPosition.y < - 4) {
@@ -133,7 +148,7 @@ export default function Player() {
             <meshStandardMaterial flatShading>
         <RenderTexture attach="map">
           <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-          <color attach="background" args={["#dc9dcd"]} />
+          <color attach="background" args={["#ffffff"]} />
           <Text ref={textRef} fontSize={3} color="#555">
             GC
           </Text>
