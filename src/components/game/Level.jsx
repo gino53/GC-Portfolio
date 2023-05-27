@@ -10,6 +10,58 @@ import useGame from './stores/useGame';
 
 THREE.ColorManagement.legacyMode = false
 
+function SceneSkills() {
+    const tree = useGLTF("/tree.gltf");
+    tree.scene.children.forEach((mesh) => {
+        mesh.castShadow = true
+    })
+
+    const rock = useGLTF("/rock.gltf");
+    rock.scene.children.forEach((mesh) => {
+        mesh.castShadow = true
+    })
+
+    const bench = useGLTF("/bench.gltf");
+    bench.scene.children.forEach((mesh) => {
+        mesh.castShadow = true
+    })
+
+    const lamp = useGLTF("/lamp.gltf");
+
+    const farm = useGLTF("/farm.gltf");
+    farm.scene.children.forEach((mesh) => {
+        mesh.castShadow = true
+    })
+
+    return <>
+        <RigidBody type='fixed' restitution={0.2} friction={0}>
+            <mesh position={[0, 0, 1]} scale={[4, 0.2, 4]} receiveShadow>
+                <boxGeometry args={[1, 3, 1]} />
+                <meshStandardMaterial color={"#45c421"} />
+            </mesh>
+            <mesh position={[0, -0.1, 0]} scale={[4, 0.2, 4]} receiveShadow>
+                <boxGeometry args={[100, 1, 100]} />
+                <meshStandardMaterial color={"#45c421"} />
+            </mesh>
+        </RigidBody>
+        <Float floatIntensity={0.5} rotationIntensity={0.5}>
+            <Text scale={0.5} maxWidth={0.25} lineHeight={0.75} textAlign="center" position={[2, 1, 3]}>
+                SKILLS
+                <meshBasicMaterial toneMapped={false} />
+            </Text>
+        </Float>
+        <RigidBody type='fixed' colliders="trimesh" restitution={0.2} friction={0}>
+            <primitive object={tree.scene} position={[3, 0, 1.5]} rotation={[0, -2, 0]} scale={[0.3, 0.3, 0.3]} />
+            <primitive object={tree.scene.clone()} position={[-3, 0, 1]} rotation={[0, -2, 0]} scale={[0.3, 0.3, 0.3]} />
+            <primitive object={rock.scene} position={[3, 0, 1.9]} rotation={[0, -1, 0]} scale={[0.3, 0.3, 0.3]} />
+            <primitive object={rock.scene.clone()} position={[-3, 0, 1.1]} rotation={[0, 2, 0]} scale={[1, 1, 1]} />
+            <primitive object={bench.scene} position={[-3, 0, 4]} rotation={[0, 2, 0]} scale={[0.6, 0.6, 0.6]} />
+            <primitive object={lamp.scene} position={[-4, 0, 3]} rotation={[0, 1, 0]} scale={[0.6, 0.6, 0.6]} />
+            <primitive object={farm.scene} position={[-0.4, -0.01, -10]} rotation={[0, -0.8, 0]} scale={[5, 5, 5]} />
+        </RigidBody>
+    </>
+}
+
 const Cube = ({ position, texture }) => {
     return (
         <RigidBody type='fixed' restitution={0.2} friction={0}>
@@ -21,7 +73,7 @@ const Cube = ({ position, texture }) => {
     );
 };
 
-function BlockStart({ position = [0, 0, 0] }) {
+function CubeSkills({ position = [0, 0, 0] }) {
 
     const numCubes = 14;
     const cubePositions = [];
@@ -48,95 +100,39 @@ function BlockStart({ position = [0, 0, 0] }) {
         cubePositions.push(position);
     }
 
-    const tree = useGLTF("/tree.gltf");
-    tree.scene.children.forEach((mesh) => {
-        mesh.castShadow = true
-    })
-    const rock = useGLTF("/rock.gltf");
-    rock.scene.children.forEach((mesh) => {
-        mesh.castShadow = true
-    })
-    const bench = useGLTF("/bench.gltf");
-    bench.scene.children.forEach((mesh) => {
-        mesh.castShadow = true
-    })
-    const lamp = useGLTF("/lamp.gltf");
-    const farm = useGLTF("/farm.gltf");
-    farm.scene.children.forEach((mesh) => {
-        mesh.castShadow = true
-    })
-
     return <group position={position} rotation={[0, Math.PI, 0]}>
-        <RigidBody type='fixed' colliders="trimesh" restitution={0.2} friction={0}>
-            <primitive object={tree.scene.clone()} position={[3, 0, -1.5]} rotation={[0, 2, 0]} scale={[0.3, 0.3, 0.3]} />
-            <primitive object={tree.scene.clone()} position={[-3, 0, -1]} rotation={[0, 2, 0]} scale={[0.3, 0.3, 0.3]} />
-            <primitive object={rock.scene} position={[-3, 0, -1]} rotation={[0, 2, 0]} scale={[0.3, 0.3, 0.3]} />
-            <primitive object={rock.scene.clone()} position={[3, 0, -1.1]} rotation={[0, 2, 0]} scale={[1, 1, 1]} />
-            <primitive object={bench.scene} position={[-3, 0, -4]} rotation={[0, 1, 0]} scale={[0.6, 0.6, 0.6]} />
-            <primitive object={lamp.scene} position={[-2.5, 0, -5.2]} rotation={[0, 1, 0]} scale={[0.6, 0.6, 0.6]} />
-            <primitive object={farm.scene} position={[0.4, -0.01, 12]} rotation={[0, 2.3, 0]} scale={[5, 5, 5]} />
-        </RigidBody>
-
-        <RigidBody type='fixed' restitution={0.2} friction={0}>
-            <mesh position={[0, 0, -1]} scale={[4, 0.2, 4]} receiveShadow>
-                <boxGeometry args={[1, 3, 1]} />
-                <meshStandardMaterial color={"#45c421"} />
-            </mesh>
-        </RigidBody>
 
         {cubePositions.map((position, index) => (
             <Cube key={index} position={position} texture={new TextureLoader().load(textures[index])} />
         ))}
 
-        <RigidBody type='fixed' restitution={0.2} friction={0}>
-            <mesh position={[0, - 0.1, 0]} scale={[4, 0.2, 4]} receiveShadow>
-                <boxGeometry args={[100, 1, 100]} />
-                <meshStandardMaterial color={"#45c421"} />
-            </mesh>
-        </RigidBody>
     </group>
 }
 
-function RotateObject({ object, position, rotation, scale }) {
-    useFrame(() => {
-        object.rotation.y += 0.01;
-    });
-
-    return (
-        <primitive object={object} position={position} rotation={rotation} scale={scale} />
-    );
-}
-
-export default function Level() {
-    const star = useGLTF("/star.gltf");
-    const phase = useGame((state) => state.phase)
-    if (phase === 'ended') {
-        console.log('end');
-    }
-
+function SceneWorks() {
     return <>
-        <Float floatIntensity={0.5} rotationIntensity={0.5}>
-            <Text
-                scale={0.5}
-                maxWidth={0.25}
-                lineHeight={0.75}
-                textAlign="center"
-                position={[2, 1, 3]}
-            >
-                SKILLS
+        <RigidBody type='fixed' restitution={0.2} friction={0}>
+            <mesh position={[0, 14, -62.5]} receiveShadow>
+                <boxGeometry args={[100, 1, 100]} />
+                <meshStandardMaterial color={"#3e403e"} />
+            </mesh>
+        </RigidBody>
+        <Float floatIntensity={0.2} rotationIntensity={0.2}>
+            <Text scale={0.5} maxWidth={0.25} lineHeight={0.75} textAlign="center" position={[2, 16, -15]}>
+                WORKS
                 <meshBasicMaterial toneMapped={false} />
             </Text>
         </Float>
-
-        <RigidBody type='fixed' colliders="trimesh" restitution={0.2} friction={0}>
-            <RotateObject
-                object={star.scene}
-                position={[0, 16, -15]}
-                rotation={[0, 2, 0]}
-                scale={[2, 2, 2]}
-            />
-        </RigidBody>
-
-        <BlockStart position={[0, 0, 0]} />
+        <Mac />
     </>
 }
+
+const Level = () => {
+    return <>
+        <SceneSkills />
+        <CubeSkills />
+        <SceneWorks />
+    </>
+}
+
+export default Level;
