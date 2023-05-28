@@ -123,7 +123,9 @@ function SceneWorks() {
                 <meshBasicMaterial toneMapped={false} />
             </Text>
         </Float>
-        <Mac />
+        <RigidBody type='fixed' restitution={0.2} friction={0}>
+            <Mac />
+        </RigidBody>
     </>
 }
 
