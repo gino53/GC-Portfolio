@@ -110,6 +110,16 @@ function CubeSkills({ position = [0, 0, 0] }) {
 }
 
 function SceneWorks() {
+    const lightning = useGLTF("/models/lightning.gltf");
+    const cauldron = useGLTF("/models/cauldron.gltf");
+    const boat = useGLTF("/models/boat.gltf");
+    const computer = useGLTF("/models/computer.gltf");
+    const keyboard = useGLTF("/models/keyboard.gltf");
+    const shield = useGLTF("/models/shield.gltf");
+    const spaceship = useGLTF("/models/spaceship.gltf");
+    const star = useGLTF("/models/star.gltf");
+    const car = useGLTF("/models/car.gltf");
+
     return <>
         <RigidBody type='fixed' restitution={0.2} friction={0}>
             <mesh position={[0, 14, -62.5]} receiveShadow>
@@ -125,6 +135,33 @@ function SceneWorks() {
         </Float>
         <RigidBody type='fixed' restitution={0.2} friction={0}>
             <Mac />
+        </RigidBody>
+        <RigidBody restitution={0.4}>
+            <primitive object={lightning.scene} position={[5.4, 17.5, -16]} rotation={[0, -1, 0]} scale={1} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='trimesh'>
+        <primitive object={car.scene} position={[5.3, 14.5, -22.4]} rotation={[0, -0.8, 0]} scale={0.5} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='hull' restitution={5}>
+        <primitive object={shield.scene} position={[4.3, 15.5, -28]} rotation={[0, -0.7, 0]} scale={1.5} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='hull'>
+        <primitive object={computer.scene} position={[4, 14.5, -34]} rotation={[0, -1, 0]} scale={0.4} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='hull'>
+        <primitive object={spaceship.scene} position={[-4, 16, -15.8]} rotation={[0, 1, 0]} scale={0.5} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='hull'>
+        <primitive object={boat.scene} position={[-2, 14.5, -26]} rotation={[0, -2, 0]} scale={0.5} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='trimesh'>
+        <primitive object={cauldron.scene} position={[-3.5, 14.5, -28]} rotation={[0, -2, 0]} scale={0.8} />
+        </RigidBody>
+        <RigidBody friction={0}>
+        <primitive object={star.scene} position={[-3.5, 15, -34]} rotation={[0, 1, 0]} scale={1} />
+        </RigidBody>
+        <RigidBody type='fixed' colliders='hull'>
+        <primitive object={keyboard.scene} position={[0, 14.5, -36.5]} scale={0.5} />
         </RigidBody>
     </>
 }
