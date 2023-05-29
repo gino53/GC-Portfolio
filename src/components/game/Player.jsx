@@ -12,6 +12,13 @@ export default function Player() {
     const { rapier, world } = useRapier()
     const rapierWorld = world.raw()
 
+    const [ballSound] = useState(() => new Audio('./song/ball.mp3'))
+
+    const collisionEnter = () => {
+        ballSound.currentTime = 0
+        ballSound.play()
+    }
+
     const [smoothedCameraPosition] = useState(() => new THREE.Vector3(10, 10, 10))
     const [smoothedCameraTarget] = useState(() => new THREE.Vector3())
 
@@ -141,7 +148,7 @@ export default function Player() {
         (textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2)
     );
 
-    return <RigidBody ref={body} colliders='ball' restitution={0.2} friction={1} linearDamping={0.5} angularDamping={0.5} position={[0, 16, -14]}>
+    return <RigidBody ref={body} colliders='ball' restitution={0.2} friction={1} linearDamping={0.5} angularDamping={0.5} position={[0, 16, -14]} onCollisionEnter={collisionEnter}>
 
         <mesh castShadow>
         <icosahedronGeometry args={[0.3, 1]} />
