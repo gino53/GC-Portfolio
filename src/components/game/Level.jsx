@@ -1,8 +1,9 @@
 import * as THREE from 'three'
 import { TextureLoader } from 'three';
 import { RigidBody } from '@react-three/rapier'
-import { Sparkles, Float, Text, useGLTF, RenderTexture, PerspectiveCamera } from '@react-three/drei'
+import { Float, Html, Sparkles, Text, useGLTF } from '@react-three/drei'
 import Mac from '../Mac';
+import { useEffect, useRef, useState } from 'react';
 
 THREE.ColorManagement.legacyMode = false
 
@@ -59,18 +60,17 @@ function SceneSkills() {
 }
 
 const Cube = ({ position, texture }) => {
-    return (
+    return <>
         <RigidBody type='fixed' restitution={0.2} friction={0}>
             <mesh position={position} castShadow receiveShadow>
                 <boxGeometry />
                 <meshStandardMaterial map={texture} />
             </mesh>
         </RigidBody>
-    );
+    </>
 };
 
 function CubeSkills({ position = [0, 0, 0] }) {
-
     const numCubes = 14;
     const cubePositions = [];
 
@@ -97,24 +97,84 @@ function CubeSkills({ position = [0, 0, 0] }) {
     }
 
     return <group position={position} rotation={[0, Math.PI, 0]}>
-
         {cubePositions.map((position, index) => (
             <Cube key={index} position={position} texture={new TextureLoader().load(textures[index])} />
         ))}
-
     </group>
 }
 
 function SceneWorks() {
+    const lightRef = useRef(null);
+
     const lightning = useGLTF("./models/lightning.gltf");
-    const cauldron = useGLTF("./models/cauldron.gltf");
-    const boat = useGLTF("./models/boat.gltf");
-    const computer = useGLTF("./models/computer.gltf");
-    const keyboard = useGLTF("./models/keyboard.gltf");
-    const shield = useGLTF("./models/shield.gltf");
-    const spaceship = useGLTF("./models/spaceship.gltf");
-    const star = useGLTF("./models/star.gltf");
     const car = useGLTF("./models/car.gltf");
+    const shield = useGLTF("./models/shield.gltf");
+    const computer = useGLTF("./models/computer.gltf");
+    const spaceship = useGLTF("./models/spaceship.gltf");
+    const boat = useGLTF("./models/boat.gltf");
+    const cauldron = useGLTF("./models/cauldron.gltf");
+    const star = useGLTF("./models/star.gltf");
+    const keyboard = useGLTF("./models/keyboard.gltf");
+
+    const [carAudio] = useState(() => new Audio('./song/car.mp3'))
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+    const carAudioPlayer = () => {
+        if (!isAudioPlaying) {
+            setIsAudioPlaying(true);
+            carAudio.play();
+            lightRef.current.color.set('#ff0000');
+        }
+    };
+    carAudio.addEventListener('ended', () => {
+        setIsAudioPlaying(false);
+        lightRef.current.color.set('#f1f1f1');
+    });
+
+    const [keyboardAudio] = useState(() => new Audio('./song/keyboard.mp3'))
+    const keyboardAudioPlayer = () => {
+        if (!isAudioPlaying) {
+            setIsAudioPlaying(true);
+            keyboardAudio.currentTime = 0
+            keyboardAudio.play();
+        }
+    };
+
+    const [collisionDetected, setCollisionDetected] = useState(false);
+    const [showIframe, setShowIframe] = useState(false);
+    const iframeTimeout = 30000;
+    const computerCollisionEnter = () => {
+        if (!collisionDetected) {
+            setCollisionDetected(true);
+            setShowIframe(true);
+        }
+    };
+    const computerCollisionExit = () => {
+        setCollisionDetected(false);
+    };
+    useEffect(() => {
+        let timer;
+
+        if (showIframe) {
+            timer = setTimeout(() => {
+                setShowIframe(false);
+            }, iframeTimeout);
+        }
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [showIframe]);
+
+    const [showSparkles, setShowSparkles] = useState(false);
+    const [spaceshipAudio] = useState(() => new Audio('./song/spaceship.mp3'))
+    const spaceshipCollisionEnter = () => {
+      setShowSparkles(true);
+      spaceshipAudio.currentTime = 0
+      spaceshipAudio.play()
+    };
+    const spaceshipCollisionExit = () => {
+      setShowSparkles(false);
+    };
 
     return <>
         <RigidBody type='fixed' restitution={0.2} friction={0}>
@@ -135,18 +195,31 @@ function SceneWorks() {
         <RigidBody restitution={0.4}>
             <primitive object={lightning.scene} position={[5.4, 17.5, -16]} rotation={[0, -1, 0]} scale={1} />
         </RigidBody>
-        <RigidBody type='fixed' colliders='trimesh'>
+        <RigidBody type='fixed' colliders='trimesh' onCollisionEnter={carAudioPlayer}>
             <primitive object={car.scene} position={[5.3, 14.5, -22.4]} rotation={[0, -0.8, 0]} scale={0.5} />
         </RigidBody>
-        <rectAreaLight width={1.4} height={1} intensity={35} color={'#f1f1f1'} rotation={[0, 2.3, 0]} position={[4.3, 14.5, -21.6]} />
+        <rectAreaLight ref={lightRef} width={1.4} height={1} intensity={35} color={'#f1f1f1'} rotation={[0, 2.3, 0]} position={[4.3, 14.5, -21.6]} />
         <RigidBody type='fixed' colliders='hull' restitution={5}>
             <primitive object={shield.scene} position={[4.3, 15.5, -28]} rotation={[0, -0.7, 0]} scale={1.5} />
         </RigidBody>
-        <RigidBody type='fixed' colliders='hull'>
-            <primitive object={computer.scene} position={[4, 14.5, -34]} rotation={[0, -1, 0]} scale={0.4} />
+        <RigidBody type='fixed' colliders='hull' onCollisionEnter={computerCollisionEnter} onCollisionExit={computerCollisionExit}>
+            <primitive object={computer.scene} position={[4, 14.5, -34]} rotation={[0, -1, 0]} scale={0.4}>
+                {showIframe && (
+                    <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.56, -1.4]} rotation-x={-0.256}>
+                        <iframe src='https://ginoportfolio.netlify.app/' />
+                    </Html>
+                )}
+            </primitive>
         </RigidBody>
-        <RigidBody type='fixed' colliders='hull'>
+        <RigidBody type='fixed' colliders='hull' onCollisionEnter={spaceshipCollisionEnter} onCollisionExit={spaceshipCollisionExit}>
             <primitive object={spaceship.scene} position={[-4, 16, -15.8]} rotation={[0, 1, 0]} scale={0.5} />
+            {showSparkles && (
+                        <group position={[-3, 15.5, -15]} rotation={[0, -0.5, 0]}>
+                        {[...Array(100)].map((_, index) => (
+                          <Sparkles key={index} count={1} scale={1} size={150} position={[index * 0.1, 0, 0]} speed={0.4} color="orange" />
+                        ))}
+                      </group>
+            )}
         </RigidBody>
         <RigidBody type='fixed' colliders='hull'>
             <primitive object={boat.scene} position={[-2, 14.5, -26]} rotation={[0, -2, 0]} scale={0.5} />
@@ -157,7 +230,7 @@ function SceneWorks() {
         <RigidBody friction={0}>
             <primitive object={star.scene} position={[-3.5, 15, -34]} rotation={[0, 1, 0]} scale={1} />
         </RigidBody>
-        <RigidBody type='fixed' colliders='hull'>
+        <RigidBody type='fixed' colliders='hull' onCollisionEnter={keyboardAudioPlayer}>
             <primitive object={keyboard.scene} position={[0, 14.5, -36.5]} scale={0.5} />
         </RigidBody>
     </>
