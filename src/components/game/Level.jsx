@@ -133,7 +133,6 @@ function SceneWorks() {
     const [keyboardAudio] = useState(() => new Audio('./song/keyboard.mp3'))
     const keyboardAudioPlayer = () => {
         if (!isAudioPlaying) {
-            setIsAudioPlaying(true);
             keyboardAudio.currentTime = 0
             keyboardAudio.play();
         }
@@ -168,12 +167,26 @@ function SceneWorks() {
     const [showSparkles, setShowSparkles] = useState(false);
     const [spaceshipAudio] = useState(() => new Audio('./song/spaceship.mp3'))
     const spaceshipCollisionEnter = () => {
-      setShowSparkles(true);
-      spaceshipAudio.currentTime = 0
-      spaceshipAudio.play()
+        setShowSparkles(true);
+        spaceshipAudio.currentTime = 0
+        spaceshipAudio.play()
     };
     const spaceshipCollisionExit = () => {
-      setShowSparkles(false);
+        setShowSparkles(false);
+    };
+
+    const [shieldAudio] = useState(() => new Audio('./song/shield.mp3'))
+    const shieldAudioPlayer = () => {
+        shieldAudio.currentTime = 0
+        shieldAudio.play();
+    };
+
+    const [showStars, setShowStars] = useState(false);
+    const [starAudio] = useState(() => new Audio('./song/star.mp3'))
+    const starsColisionEnter = () => {
+        setShowStars(true);
+        starAudio.currentTime = 0
+        starAudio.play();
     };
 
     return <>
@@ -199,7 +212,7 @@ function SceneWorks() {
             <primitive object={car.scene} position={[5.3, 14.5, -22.4]} rotation={[0, -0.8, 0]} scale={0.5} />
         </RigidBody>
         <rectAreaLight ref={lightRef} width={1.4} height={1} intensity={35} color={'#f1f1f1'} rotation={[0, 2.3, 0]} position={[4.3, 14.5, -21.6]} />
-        <RigidBody type='fixed' colliders='hull' restitution={5}>
+        <RigidBody type='fixed' colliders='hull' restitution={5} onCollisionEnter={shieldAudioPlayer}>
             <primitive object={shield.scene} position={[4.3, 15.5, -28]} rotation={[0, -0.7, 0]} scale={1.5} />
         </RigidBody>
         <RigidBody type='fixed' colliders='hull' onCollisionEnter={computerCollisionEnter} onCollisionExit={computerCollisionExit}>
@@ -214,11 +227,11 @@ function SceneWorks() {
         <RigidBody type='fixed' colliders='hull' onCollisionEnter={spaceshipCollisionEnter} onCollisionExit={spaceshipCollisionExit}>
             <primitive object={spaceship.scene} position={[-4, 16, -15.8]} rotation={[0, 1, 0]} scale={0.5} />
             {showSparkles && (
-                        <group position={[-3, 15.5, -15]} rotation={[0, -0.5, 0]}>
-                        {[...Array(100)].map((_, index) => (
-                          <Sparkles key={index} count={1} scale={1} size={150} position={[index * 0.1, 0, 0]} speed={0.4} color="orange" />
-                        ))}
-                      </group>
+                <group position={[-3, 15.5, -15]} rotation={[0, -0.5, 0]}>
+                    {[...Array(100)].map((_, index) => (
+                        <Sparkles key={index} count={1} scale={1} size={150} position={[index * 0.1, 0, 0]} speed={0.4} color="orange" />
+                    ))}
+                </group>
             )}
         </RigidBody>
         <RigidBody type='fixed' colliders='hull'>
@@ -227,8 +240,11 @@ function SceneWorks() {
         <RigidBody type='fixed' colliders='trimesh'>
             <primitive object={cauldron.scene} position={[-3.5, 14.5, -28]} rotation={[0, -2, 0]} scale={0.8} />
         </RigidBody>
-        <RigidBody friction={0}>
+        <RigidBody type='fixed' friction={0} onCollisionEnter={starsColisionEnter}>
             <primitive object={star.scene} position={[-3.5, 15, -34]} rotation={[0, 1, 0]} scale={1} />
+            {showStars && (
+                <Sparkles count={1000} scale={10} size={10} position={[-3.5, 15, -34]} speed={0.4} color="yellow" />
+            )}
         </RigidBody>
         <RigidBody type='fixed' colliders='hull' onCollisionEnter={keyboardAudioPlayer}>
             <primitive object={keyboard.scene} position={[0, 14.5, -36.5]} scale={0.5} />
