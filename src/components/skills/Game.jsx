@@ -1,7 +1,10 @@
-import { Canvas } from '@react-three/fiber';
-import Experience from './Experience.jsx';
-import { KeyboardControls } from "@react-three/drei";
-import { useEffect } from 'react';
+import { useEffect } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { KeyboardControls, Sky } from "@react-three/drei"
+import { Physics } from '@react-three/rapier'
+import Lights from './Lights.jsx'
+import Level from './Level.jsx'
+import Player from './Player.jsx'
 
 const Game = () => {
     useEffect(() => {
@@ -38,16 +41,14 @@ const Game = () => {
                 { name: 'jump', keys: ['Space'] }
             ]}
         >
-            <Canvas
-                shadows
-                camera={{
-                    fov: 45,
-                    near: 0.1,
-                    far: 200,
-                    position: [2.5, 4, 6]
-                }}
-            >
-                <Experience />
+            <Canvas shadows camera={{ fov: 45, near: 0.1, far: 200, position: [2.5, 4, 6] }}>
+                <Sky sunPosition={[100, 20, 100]} />
+                <fog attach="fog" args={['#ffffff', 5, 30]} />
+                <Physics>
+                    <Lights />
+                    <Level />
+                    <Player />
+                </Physics>
             </Canvas>
         </KeyboardControls>
     );

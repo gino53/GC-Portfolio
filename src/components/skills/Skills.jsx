@@ -1,6 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import Game from "./Game.jsx"
+import React, { useState } from "react";
+import styled from "styled-components";
+import Game from "./Game.jsx";
+import useGame from "./stores/useGame.jsx"
 
 const Section = styled.div`
   height: 100vh;
@@ -31,9 +32,33 @@ const Container = styled.div`
 `;
 
 const Skills = () => {
+  const [ambianceAudio] = useState(() => new Audio('./song/ambiance.mp3'));
+  let isPlaying = false;
+  const ambianceAudioPlayer = () => {
+    if (isPlaying) {
+      var player = document.querySelector('.player');
+      player.classList.remove('active');
+      ambianceAudio.pause();
+      isPlaying = false;
+    } else {
+      var player = document.querySelector('.player');
+      player.classList.add('active');
+      ambianceAudio.play();
+      isPlaying = true;
+    }
+  };
+
+  const restart = useGame((state) => state.restart)
+
   return (
     <Section id="skills">
       <Container>
+        <div className="interface">
+          <div className="raw">
+            <div className="player" onClick={ambianceAudioPlayer}>Song</div>
+            <div className="restartBtn" onClick={restart}>Restart</div>
+          </div>
+        </div>
         <Game />
       </Container>
     </Section>

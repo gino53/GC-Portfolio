@@ -1,8 +1,8 @@
-import { PerspectiveCamera, RenderTexture, Text, useKeyboardControls } from "@react-three/drei"
-import { useFrame } from "@react-three/fiber"
-import { RigidBody, useRapier } from "@react-three/rapier"
-import { useState, useEffect, useRef } from "react"
 import * as THREE from 'three'
+import { useState, useEffect, useRef } from "react"
+import { useFrame } from "@react-three/fiber"
+import { PerspectiveCamera, RenderTexture, Text, useKeyboardControls } from "@react-three/drei"
+import { RigidBody, useRapier } from "@react-three/rapier"
 import useGame from "./stores/useGame.jsx"
 
 export default function Player() {
@@ -39,7 +39,7 @@ export default function Player() {
     }
 
     const reset = () => {
-        body.current.setTranslation({ x: 0, y: 1, z: 0 })
+        body.current.setTranslation({ x: 0, y: 1, z: 13 })
         body.current.setLinvel({ x: 0, y: 0, z: 0 })
         body.current.setAngvel({ x: 0, y: 0, z: 0 })
     }

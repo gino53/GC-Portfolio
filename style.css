@@ -25,3 +25,53 @@ body,
   border-radius: 20px;
   background-color: #000000;
 }
+
+.interface {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  font-family: "Bebas Neue", cursive;
+  z-index: 1;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66px;
+  height: 40px;
+  margin: 4px;
+  border: 2px solid #ffffff;
+  background: #ffffff44;
+  color: #ffffff;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.player.active {
+  background: #0fce22;
+}
+
+.restartBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66px;
+  height: 40px;
+  margin: 4px;
+  border: 2px solid #ffffff;
+  background: #ffffff44;
+  color: #ffffff;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.restartBtn:active {
+  background: #ffffff99;
+}
