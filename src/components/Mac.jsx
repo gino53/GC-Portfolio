@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { TextureLoader } from "three";
 
 const Mac = () => {
-  const { nodes, materials } = useGLTF("/mac-draco.glb");
+  const { nodes, materials } = useGLTF("./models/mac-draco.glb");
 
   const textures = useMemo(() => {
     return [

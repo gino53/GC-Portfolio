@@ -3,7 +3,6 @@ import { useFrame } from "@react-three/fiber"
 import { RigidBody, useRapier } from "@react-three/rapier"
 import { useState, useEffect, useRef } from "react"
 import * as THREE from 'three'
-import { TextureLoader } from 'three';
 import useGame from "./stores/useGame.jsx"
 
 export default function Player() {
@@ -144,23 +143,23 @@ export default function Player() {
 
     const textRef = useRef();
     useFrame(
-      (state) =>
-        (textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2)
+        (state) =>
+            (textRef.current.position.x = Math.sin(state.clock.elapsedTime) * 2)
     );
 
-    return <RigidBody ref={body} colliders='ball' restitution={0.2} friction={1} linearDamping={0.5} angularDamping={0.5} position={[0, 16, -28]} onCollisionEnter={collisionEnter}>
+    return <RigidBody ref={body} colliders='ball' restitution={0.2} friction={1} linearDamping={0.5} angularDamping={0.5} position={[0, 0, 13]} onCollisionEnter={collisionEnter}>
 
         <mesh castShadow>
-        <icosahedronGeometry args={[0.3, 1]} />
+            <icosahedronGeometry args={[0.3, 1]} />
             <meshStandardMaterial flatShading>
-        <RenderTexture attach="map">
-          <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-          <color attach="background" args={["#ffffff"]} />
-          <Text ref={textRef} fontSize={3} color="#555">
-            GC
-          </Text>
-        </RenderTexture>
-      </meshStandardMaterial>
-    </mesh>
+                <RenderTexture attach="map">
+                    <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+                    <color attach="background" args={["#ffffff"]} />
+                    <Text ref={textRef} fontSize={3} color="#555">
+                        GC
+                    </Text>
+                </RenderTexture>
+            </meshStandardMaterial>
+        </mesh>
     </RigidBody>
 }
