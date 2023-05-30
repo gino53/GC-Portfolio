@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { Canvas } from "@react-three/fiber";
-import { FaTimes } from 'react-icons/fa';
-import { ContactShadows, Float, PresentationControls, Sparkles, useGLTF } from "@react-three/drei";
-import Effects from "./Effects.jsx"
-import Game from "./game/Game.jsx";
+import React from "react"
+import styled from "styled-components"
+import Game from "./Game.jsx"
 
 const Section = styled.div`
   height: 100vh;
@@ -34,7 +30,7 @@ const Container = styled.div`
   }
 `;
 
-const Home = () => {
+const Skills = () => {
   return (
     <Section id="skills">
       <Container>
@@ -44,4 +40,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Skills;

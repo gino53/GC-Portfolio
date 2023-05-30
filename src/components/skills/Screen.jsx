@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import { TextureLoader } from "three";
 
-const Mac = () => {
+const Screen = () => {
   const { nodes, materials } = useGLTF("./models/mac-draco.glb");
 
   const textures = useMemo(() => {
@@ -62,4 +62,4 @@ const Mac = () => {
   );
 }
 
-export default Mac;
+export default Screen;

@@ -1,9 +1,9 @@
 import * as THREE from 'three'
-import { TextureLoader } from 'three';
+import { TextureLoader } from 'three'
 import { RigidBody } from '@react-three/rapier'
 import { Html, Sparkles, Text, Text3D, useGLTF } from '@react-three/drei'
-import Mac from '../Mac';
-import { useEffect, useRef, useState } from 'react';
+import Screen from './Screen'
+import { useEffect, useRef, useState } from 'react'
 
 THREE.ColorManagement.legacyMode = false
 
@@ -270,7 +270,7 @@ function SceneWorks() {
         </RigidBody>
 
         <RigidBody type='fixed' restitution={0.2} friction={0}>
-            <Mac />
+            <Screen />
         </RigidBody>
 
         <RigidBody restitution={0.4} onCollisionEnter={hitAudioPlayer}>
