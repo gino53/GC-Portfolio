@@ -22,14 +22,6 @@ const Desk = () => {
         }
     }
 
-    const click = new Howl({
-        src: ['./song/click.mp3']
-    });
-
-    function keyboardAudio() {
-        click.play();
-    }
-
     return (
         <>
             <PresentationControls snap global zoom={0.8} rotation={[0.13, 0.1, 0]} polar={[0, Math.PI / 4]} azimuth={[-Math.PI / 4, Math.PI / 4]}>
@@ -38,7 +30,7 @@ const Desk = () => {
                     <pointLight position={[14, 30, 10]} />
                     <rectAreaLight width={2.5} height={1.65} intensity={25} color={'#acb2b2'} rotation={[-0.1, Math.PI, 0]} position={[0, 0.55, -1.15]} />
                     <primitive object={table.scene} position={[0, -2.8, 0]} scale={[1.5, 1.5, 1.5]} />
-                    <primitive onClick={keyboardAudio} object={computer.scene} position={[0, -0.6, 0.15]} scale={[0.7, 0.7, 0.7]}>
+                    <primitive object={computer.scene} position={[0, -0.6, 0.15]} scale={[0.7, 0.7, 0.7]}>
                         <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.56, -1.4]} rotation-x={-0.256}>
                             <iframe src='https://marble-r.vercel.app/' />
                         </Html>

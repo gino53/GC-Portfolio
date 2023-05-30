@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { TextureLoader } from 'three';
 import { RigidBody } from '@react-three/rapier'
-import { Html, Sparkles, Text3D, useGLTF } from '@react-three/drei'
+import { Html, Sparkles, Text, Text3D, useGLTF } from '@react-three/drei'
 import Mac from '../Mac';
 import { useEffect, useRef, useState } from 'react';
 
@@ -47,6 +47,16 @@ function SceneSkills() {
                 <meshStandardMaterial color={"#45c421"} />
             </mesh>
         </RigidBody>
+
+        <Text position={[-2.01, 0.02, 12]} rotation={[-1.6, 0, 0]} scale={0.2}>
+            "TO CONTROLL THIS BALL USE ARROW KEYS"
+        </Text>
+        <Text position={[-2.25, 0.02, 12.3]} rotation={[-1.6, 0, 0]} scale={0.2}>
+            "TO MAKE JUMP THIS BALL USE SPACE"
+        </Text>
+        <Text position={[-2.52, 0.02, 12.6]} rotation={[-1.6, 0, 0]} scale={0.2}>
+            "GO TO THE TOP AND HAVE FUN !"
+        </Text>
 
         <RigidBody colliders='trimesh' onCollisionEnter={hitAudioPlayer}>
             <Text3D font="./fonts/helvetiker_regular.typeface.json" position={[2.5, 0.1, 3.5]} rotation={[0, -0.8, 0]} castShadow>
@@ -151,11 +161,14 @@ function SceneWorks() {
 
     const [collisionDetected, setCollisionDetected] = useState(false);
     const [showIframe, setShowIframe] = useState(false);
+    const [computerAudio] = useState(() => new Audio('./song/computer.mp3'))
     const iframeTimeout = 30000;
     const computerCollisionEnter = () => {
         if (!collisionDetected) {
             setCollisionDetected(true);
             setShowIframe(true);
+            computerAudio.currentTime = 0
+            computerAudio.play();
         }
     };
     const computerCollisionExit = () => {
@@ -241,6 +254,13 @@ function SceneWorks() {
                 <meshStandardMaterial color={"#3e403e"} />
             </mesh>
         </RigidBody>
+
+        <Text position={[-1.9, 14.6, -14]} rotation={[-1.6, 0, 0]} scale={0.2}>
+            "RUN INTO OBJECTS"
+        </Text>
+        <Text position={[-1.759, 14.6, -13.5]} rotation={[-1.6, 0, 0]} scale={0.2}>
+            "CLICK ON THE IMAGES"
+        </Text>
 
         <RigidBody colliders='trimesh' onCollisionEnter={hitAudioPlayer}>
             <Text3D font="./fonts/helvetiker_regular.typeface.json" position={[-1.8, 14.8, -16]} castShadow>
