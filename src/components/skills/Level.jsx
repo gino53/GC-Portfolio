@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
-import * as THREE from 'three'
-import { TextureLoader } from 'three'
-import { Html, Sparkles, Text, Text3D, useGLTF } from '@react-three/drei'
-import { RigidBody } from '@react-three/rapier'
-import Screen from './Screen'
+import * as THREE from 'three';
+import { TextureLoader } from 'three';
+import { useEffect, useRef, useState } from 'react';
+import { Html, Sparkles, Text, Text3D, useGLTF } from '@react-three/drei';
+import { RigidBody } from '@react-three/rapier';
+import Screen from './Screen';
 
 THREE.ColorManagement.legacyMode = false
 

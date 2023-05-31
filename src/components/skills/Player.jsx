@@ -1,9 +1,9 @@
-import * as THREE from 'three'
-import { useState, useEffect, useRef } from "react"
-import { useFrame } from "@react-three/fiber"
-import { PerspectiveCamera, RenderTexture, Text, useKeyboardControls } from "@react-three/drei"
-import { RigidBody, useRapier } from "@react-three/rapier"
-import useGame from "./stores/useGame.jsx"
+import * as THREE from 'three';
+import { useState, useEffect, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import { PerspectiveCamera, RenderTexture, Text, useKeyboardControls } from "@react-three/drei";
+import { RigidBody, useRapier } from "@react-three/rapier";
+import useGame from "./stores/useGame.jsx";
 
 export default function Player() {
     const body = useRef()
@@ -22,9 +22,6 @@ export default function Player() {
     const [smoothedCameraTarget] = useState(() => new THREE.Vector3())
 
     const start = useGame((state) => state.start)
-    const end = useGame((state) => state.end)
-    const restart = useGame((state) => state.restart)
-    const blocksCount = useGame((state) => state.blocksCount)
 
     const jump = () => {
         const origin = body.current.translation()
@@ -128,17 +125,6 @@ export default function Player() {
 
         state.camera.position.copy(smoothedCameraPosition)
         state.camera.lookAt(smoothedCameraTarget)
-
-        /**
-         * Phases
-         */
-        if (bodyPosition.z < -14 && bodyPosition.y < 15) {
-            end();
-        }
-
-        if (bodyPosition.y < - 4) {
-            restart()
-        }
     })
 
     const textRef = useRef();

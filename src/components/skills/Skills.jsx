@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Game from "./Game.jsx";
-import useGame from "./stores/useGame.jsx"
+import useGame from "./stores/useGame.jsx";
 
 const Section = styled.div`
   height: 100vh;
@@ -50,15 +50,48 @@ const Skills = () => {
 
   const restart = useGame((state) => state.restart)
 
+  const [showInterface, setShowInterface] = useState(false);
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setShowInterface(true);
+        } else {
+          setShowInterface(false);
+        }
+      });
+    };
+
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1,
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, options);
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      observer.observe(skillsSection);
+    }
+
+    return () => {
+      if (skillsSection) {
+        observer.unobserve(skillsSection);
+      }
+    };
+  }, []);
+
   return (
     <Section id="skills">
       <Container>
-        <div className="interface">
-          <div className="raw">
-            <div className="player" onClick={ambianceAudioPlayer}>Song</div>
-            <div className="restartBtn" onClick={restart}>Restart</div>
+        {showInterface && (
+          <div className="interface">
+            <div className="raw">
+              <div className="player" onClick={ambianceAudioPlayer}>Song</div>
+              <div className="restartBtn" onClick={restart}>Restart</div>
+            </div>
           </div>
-        </div>
+        )}
         <Game />
       </Container>
     </Section>
