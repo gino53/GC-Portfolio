@@ -20,7 +20,7 @@ const FloatingText = ({ text, position, waveOffset, waveAmplitude, ...rest }) =>
 };
 
 const List = () => {
-    const menuItems = ['Home', 'Skills', 'Works', 'Contact'];
+    const menuItems = ['Home', 'Skills', 'Certificates', 'Contact'];
 
     const handleClick = (sectionId) => {
         const section = document.getElementById(sectionId);
@@ -36,7 +36,7 @@ const List = () => {
                 const waveOffset = index * 1;
                 const waveAmplitude = 1;
                 return (
-                    <Canvas key={item} style={{ width: '80px', height: '100px' }} onClick={() => handleClick(sectionId)} onPointerEnter={() => { document.body.style.cursor = 'pointer'; }} onPointerLeave={() => { document.body.style.cursor = 'default'; }}>
+                    <Canvas key={item} style={{ width: '95px', height: '100px' }} onClick={() => handleClick(sectionId)} onPointerEnter={() => { document.body.style.cursor = 'pointer'; }} onPointerLeave={() => { document.body.style.cursor = 'default'; }}>
                         <ambientLight />
                         <pointLight position={[10, 10, 10]} />
                         <Center>

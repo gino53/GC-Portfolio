@@ -19,6 +19,7 @@
     "react": "^18.2",
     "react-dom": "18.2",
     "react-icons": "^4.8.0",
+    "react-parallax-tilt": "^1.7.142",
     "react-slick": "^0.29.0",
     "styled-components": "^5.3.6",
     "three": "^0.150.1",

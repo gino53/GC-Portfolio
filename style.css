@@ -75,3 +75,58 @@ body,
 .restartBtn:active {
   background: #ffffff99;
 }
+
+.parallax-effect-threejs {
+  position: relative;
+  left: 70px;
+  width: 100%;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  background-image: url('/public/img/certificates/threejs.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.threejs {
+  position: relative;
+  top: -10px;
+  left: 20px;
+  width: 55%;
+  margin-left: 35%;
+  transform: translateZ(60px) scale(0.8);
+}
+
+.parallax-effect-google {
+  position: relative;
+  left: 70px;
+  width: 100%;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  background-image: url('/public/img/certificates/google.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.google {
+  position: relative;
+  top: -145px;
+  left: -160px;
+  width: 65%;
+  transform: translateZ(40px) scale(0.5);
+}
+
+.parallax-effect-openclassrooms {
+  position: relative;
+  left: 70px;
+  width: 100%;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  background-image: url('/public/img/certificates/openclassrooms.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.openclassrooms {
+  position: relative;
+  top: -180px;
+  width: 65%;
+  margin-left: 50%;
+  transform: translateZ(40px) scale(0.4);
+}

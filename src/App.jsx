@@ -2,7 +2,7 @@ import styled from "styled-components";
 import '../style.css'
 import Home from "./components/home/Home.jsx";
 import Skills from "./components/skills/Skills.jsx";
-import Works from "./components/Works.jsx";
+import Certificates from "./components/certificates/Certificates.jsx";
 import Contact from "./components/Contact.jsx";
 
 const Container = styled.div`
@@ -23,7 +23,7 @@ function App() {
     <Container>
       <Home />
       <Skills />
-      <Works />
+      <Certificates />
       <Contact />
     </Container>
   );
