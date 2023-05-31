@@ -1,7 +1,7 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
 import '../../../style.css'
-import img from '../../../public/img/certificates/google3D.png';
+import img from '/img/certificates/google3D.png';
 
 const Google = () => (
   <Tilt

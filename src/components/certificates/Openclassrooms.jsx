@@ -1,7 +1,7 @@
 import React from 'react';
 import Tilt from 'react-parallax-tilt';
 import '../../../style.css'
-import img from '../../../public/img/certificates/openclassrooms3D.png';
+import img from '/img/certificates/openclassrooms3D.png';
 
 const Openclassrooms = () => (
   <Tilt

@@ -8,6 +8,7 @@ body,
   height: 100%;
   background: ivory;
   user-select: none;
+  overflow: hidden;
 }
 
 .htmlComputer iframe {
@@ -82,7 +83,7 @@ body,
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  background-image: url('/public/img/certificates/threejs.png');
+  background-image: url('/img/certificates/threejs.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -101,7 +102,7 @@ body,
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  background-image: url('/public/img/certificates/google.png');
+  background-image: url('/img/certificates/google.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -119,7 +120,7 @@ body,
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  background-image: url('/public/img/certificates/openclassrooms.png');
+  background-image: url('/img/certificates/openclassrooms.png');
   background-size: contain;
   background-repeat: no-repeat;
 }

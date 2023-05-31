@@ -8,7 +8,7 @@ const ListStyle = styled.button`
   padding: 10px;
   border: none;
   border-radius: 10px;
-  background-color: ${({ isActive }) => (isActive ? "#ce7c68" : "#f6e6db")};
+  background-color: ${({ isActive }) => (isActive ? "#683022" : "#f6e6db")};
   color: ${({ isActive }) => (isActive ? "whitesmoke" : "#333")};
   font-size: medium;
   font-family: 'Permanent Marker', cursive;
@@ -16,7 +16,8 @@ const ListStyle = styled.button`
   cursor: pointer;
 
   &:hover {
-    border: 2px solid #ce7c68;
+    background-color: #683022;
+    color: whitesmoke;
   }
 `;
 
