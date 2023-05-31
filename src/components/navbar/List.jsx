@@ -1,48 +1,46 @@
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Center, OrbitControls, Text3D } from "@react-three/drei";
+import React, { useState } from "react";
+import styled from "styled-components";
 
-const FloatingText = ({ text, position, waveOffset, waveAmplitude, ...rest }) => {
-    const textRef = useRef();
+const ListStyle = styled.button`
+  display: flex;
+  justify-content: center;
+  width: 120px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: ${({ isActive }) => (isActive ? "#ce7c68" : "#f6e6db")};
+  color: ${({ isActive }) => (isActive ? "whitesmoke" : "#333")};
+  font-size: medium;
+  font-family: 'Permanent Marker', cursive;
+  transition: background-color 0.5s;
+  cursor: pointer;
 
-    useFrame((state) => {
-        const time = state.clock.elapsedTime;
-        const y = Math.sin(time + waveOffset) * waveAmplitude;
-        textRef.current.position.y = y;
-    });
-
-    return (
-        <Text3D ref={textRef} position={position} {...rest}>
-            {text}
-            <OrbitControls enableRotate={false} enableZoom={false} />
-        </Text3D>
-    );
-};
+  &:hover {
+    border: 2px solid #ce7c68;
+  }
+`;
 
 const List = () => {
     const menuItems = ['Home', 'Skills', 'Certificates', 'Contact'];
+    const [activeSection, setActiveSection] = useState("home");
 
     const handleClick = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
             section.scrollIntoView({ behavior: 'smooth' });
+            setActiveSection(sectionId);
         }
     };
 
     return (
         <>
-            {menuItems.map((item, index) => {
+            {menuItems.map((item) => {
                 const sectionId = item.toLowerCase();
-                const waveOffset = index * 1;
-                const waveAmplitude = 1;
+                const isActive = sectionId === activeSection;
                 return (
-                    <Canvas key={item} style={{ width: '95px', height: '100px' }} onClick={() => handleClick(sectionId)} onPointerEnter={() => { document.body.style.cursor = 'pointer'; }} onPointerLeave={() => { document.body.style.cursor = 'default'; }}>
-                        <ambientLight />
-                        <pointLight position={[10, 10, 10]} />
-                        <Center>
-                            <FloatingText text={item} font="./fonts/helvetiker_regular.typeface.json" color="white" waveOffset={waveOffset} waveAmplitude={waveAmplitude} />
-                        </Center>
-                    </Canvas>
+                    <ListStyle key={item} isActive={isActive} onClick={() => handleClick(sectionId)}>
+                        {item}
+                    </ListStyle>
                 );
             })}
         </>

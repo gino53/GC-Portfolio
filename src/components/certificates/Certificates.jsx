@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ThreeJS from "./ThreeJS.jsx";
-import Google from "./Google.jsx";
 import Openclassrooms from "./Openclassrooms.jsx";
+import Google from "./Google.jsx";
 
 const data = [
   "ThreeJS",
@@ -72,7 +72,7 @@ const ListItem = styled.li`
     width: 0px;
     overflow: hidden;
     white-space: nowrap;
-    color: #cc9486;
+    color: #f5e4dc;
   }
 
   &:hover {

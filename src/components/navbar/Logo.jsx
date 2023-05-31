@@ -1,11 +1,11 @@
+import * as THREE from "three";
 import React from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Center, OrbitControls, Text3D, useMatcapTexture } from "@react-three/drei";
-import * as THREE from "three";
 
 const Logo = () => {
   const TextMesh = () => {
-    const [matcapTexture] = useMatcapTexture('7877EE_D87FC5_75D9C7_1C78C0', 256);
+    const [matcapTexture] = useMatcapTexture('C99A8B_491B0E_6E4136_8A4D28', 256);
     const material = React.useMemo(() => new THREE.MeshMatcapMaterial(), []);
 
     useFrame(() => {
@@ -30,7 +30,7 @@ const Logo = () => {
       position={[0, 0, 0]}
       >
         GC
-        <OrbitControls enableZoom={false} autoRotate />
+        <OrbitControls enableRotate={false} enableZoom={false} autoRotate />
       </Text3D>
 
     );

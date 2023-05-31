@@ -25,10 +25,10 @@ const Container = styled.div`
   scroll-snap-align: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
 `;
@@ -51,10 +51,11 @@ const Right = styled.div`
   justify-content: center;
   align-items: end;
   flex: 2;
+  height: 70%;
   position: relative;
   gap: 20px;
   padding: 30px;
-  border: white solid 5px;
+  border: whitesmoke solid 5px;
   border-right: none;
   @media only screen and (max-width: 768px) {
     flex: 1;

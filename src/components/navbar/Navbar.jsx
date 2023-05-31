@@ -6,8 +6,6 @@ import Logo from "./Logo.jsx";
 const Section = styled.div`
   position: fixed;
   z-index: 1;
-  display: flex;
-  justify-content: center;
 
   @media only screen and (max-width: 768px) {
     width: 100%;
@@ -15,10 +13,10 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  width: 1400px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  width: 1400px;
   padding: 10px 0px;
 
   @media only screen and (max-width: 768px) {

@@ -12,7 +12,7 @@ const Container = styled.div`
   overflow-y: auto;
   scrollbar-width: none;
   color: white;
-  background-color: black;
+  background-color: #d3b6a5;
   &::-webkit-scrollbar{
     display: none;
   }
