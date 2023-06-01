@@ -13,7 +13,7 @@ const Section = styled.div`
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 100%;
   gap: 50px;
@@ -25,8 +25,8 @@ const Left = styled.div`
   justify-content: flex-end;
   align-items: center;
 
-  @media only screen and (max-width: 768px) {
-    justify-content: center;
+  @media only screen and (max-width: 1024px) {
+    flex: 2;
   }
 `;
 
@@ -41,10 +41,6 @@ const Form = styled.form`
   flex-direction: column;
   width: 500px;
   gap: 25px;
-
-  @media only screen and (max-width: 768px) {
-    width: 300px;
-  }
 `;
 
 const Input = styled.input`
@@ -99,10 +95,14 @@ const Right = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 800px;
+  height: 800px;
 
-  @media only screen and (max-width: 768px) {
-    display: none;
+  @media only screen and (max-width: 1024px) {
+    width: 600px;
+    height: 600px;
   }
+
 `;
 
 const Contact = () => {
@@ -150,13 +150,13 @@ const Contact = () => {
           </Form>
         </Left>
         <Right>
-          <Canvas camera={{ position: [5, 5, 5], fov: 25 }} style={{ width: '330px', height: '330px' }} >
+          <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[3, 2, 1]} />
             <Linkedin />
             <OrbitControls enableRotate={false} enableZoom={false} autoRotate />
           </Canvas>
-          <Canvas camera={{ position: [5, 5, 5], fov: 25 }} style={{ width: '330px', height: '330px' }} >
+          <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
             <ambientLight intensity={0.5} />
             <directionalLight position={[3, 2, 1]} />
             <Github />

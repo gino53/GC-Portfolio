@@ -51,8 +51,8 @@ const Right = styled.div`
   padding: 30px;
   border: #f6e6db solid 5px;
   border-right: none;
+
   @media only screen and (max-width: 1440px) {
-    flex: 1;
     align-items: center;
     border: none;
   }
@@ -77,6 +77,7 @@ const Description = styled.p`
   text-align: end;
   color: #683022;
   font-size: 24px;
+
   @media only screen and (max-width: 1440px) {
     padding: 20px;
     text-align: center;
@@ -116,7 +117,6 @@ const Intro = styled.div`
 
   @media (max-width: 1440px) {
     flex-direction: column;
-    align-items: end;
   }
 `;
 
@@ -140,7 +140,7 @@ const DeskContainer = styled.div`
   @media (max-width: 1440px) {
     display: block;
     width: 100%;
-    height: 200px;
+    height: 800px;
   }
 `;
 
@@ -157,7 +157,11 @@ const CloseBtn = styled.button`
 
   @media (max-width: 1440px) {
     position: relative;
-    top: -360px;
+    top: -850px;
+  }
+
+  @media (max-width: 1024px) {
+    top: -950px;
   }
 `;
 
@@ -198,7 +202,7 @@ const Home = () => {
                 This musical creativity is reflected in my approach to web development, where I always seek to bring an artistic touch to my projects.
               </Text>
               <DeskContainer>
-                <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }} style={{ width: '100%', height: '1024px' }}>
+                <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }}>
                   <Desk />
                 </Canvas>
               </DeskContainer>

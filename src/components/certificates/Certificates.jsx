@@ -23,9 +23,8 @@ const Container = styled.div`
   justify-content: space-between;
   width: 1400px;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1024px) {
     flex-direction: column;
-    width: 100%;
   }
 `;
 
@@ -34,8 +33,7 @@ const Left = styled.div`
   display: flex;
   align-items: center;
 
-  @media only screen and (max-width: 768px) {
-    justify-content: center;
+  @media only screen and (max-width: 1024px) {
     padding: 20px;
   }
 `;
@@ -55,10 +53,8 @@ const ListItem = styled.li`
   -webkit-text-stroke: 1px #f5e4dc;
   cursor: pointer;
 
-  @media only screen and (max-width: 768px) {
-    color: white;
-    font-size: 24px;
-    -webkit-text-stroke: 0px;
+  @media only screen and (max-width: 1024px) {
+    font-size: 36px;
   }
 
   ::after {
@@ -88,8 +84,11 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 1024px) {
+    width: 60%;
+  }
 `;
 
 const Certificates = () => {
