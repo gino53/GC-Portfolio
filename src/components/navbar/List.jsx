@@ -11,7 +11,7 @@ const ListStyle = styled.button`
   background-color: ${({ isActive }) => (isActive ? "#683022" : "#f6e6db")};
   color: ${({ isActive }) => (isActive ? "#f6e6db" : "#683022")};
   font-size: medium;
-  font-family: 'Permanent Marker', cursive;
+  font-family: cursive;
   transition: background-color 0.5s;
   cursor: pointer;
 

@@ -19,14 +19,6 @@ body,
   background-color: #000000;
 }
 
-.htmlPhone iframe {
-  width: 540px;
-  height: 1040px;
-  border: none;
-  border-radius: 20px;
-  background-color: #000000;
-}
-
 .interface {
   position: fixed;
   top: 0;
@@ -37,44 +29,34 @@ body,
   width: 100%;
   height: 100%;
   pointer-events: none;
-  font-family: "Bebas Neue", cursive;
   z-index: 1;
 }
 
-.player {
+.player,
+.restart {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 66px;
-  height: 40px;
-  margin: 4px;
-  border: 2px solid #ffffff;
-  background: #ffffff44;
-  color: #ffffff;
+  width: 120px;
+  margin: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f6e6db;
+  color: #683022;
+  font-family: cursive;
+  font-size: medium;
+  transition: 0.5s;
   pointer-events: auto;
   cursor: pointer;
 }
-
+.player:hover,
+.restart:hover {
+  background-color: #683022;
+  color: #f6e6db;
+}
 .player.active {
-  background: #0fce22;
-}
-
-.restartBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 66px;
-  height: 40px;
-  margin: 4px;
-  border: 2px solid #ffffff;
-  background: #ffffff44;
-  color: #ffffff;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.restartBtn:active {
-  background: #ffffff99;
+  background: #683022;
+  color: #f6e6db;
 }
 
 .parallax-effect-threejs {
@@ -83,7 +65,7 @@ body,
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  background-image: url('/img/certificates/threejs.png');
+  background-image: url("/img/certificates/threejs.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -102,7 +84,7 @@ body,
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  background-image: url('/img/certificates/google.png');
+  background-image: url("/img/certificates/google.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -120,7 +102,7 @@ body,
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  background-image: url('/img/certificates/openclassrooms.png');
+  background-image: url("/img/certificates/openclassrooms.png");
   background-size: contain;
   background-repeat: no-repeat;
 }

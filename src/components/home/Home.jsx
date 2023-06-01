@@ -66,7 +66,7 @@ const Right = styled.div`
 const Title = styled.h1`
   color: #f6e6db;
   font-size: 74px;
-  font-family: 'Permanent Marker', cursive;
+  font-family: cursive;
   text-align: end;
 
   @media only screen and (max-width: 768px) {
@@ -98,7 +98,7 @@ const OpenBtn = styled.button`
   background-color: #f6e6db;
   color: #683022;
   font-size: medium;
-  font-family: 'Permanent Marker', cursive;
+  font-family: cursive;
   transition: 0.5s;
   cursor: pointer;
 
@@ -125,7 +125,7 @@ const Text = styled.p`
   line-height: 3;
   text-align: center;
   color: #683022;
-  font-family: 'Permanent Marker', cursive;
+  font-family: cursive;
   z-index: 1;
 `;
 

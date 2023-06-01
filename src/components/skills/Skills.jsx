@@ -86,10 +86,8 @@ const Skills = () => {
       <Container>
         {showInterface && (
           <div className="interface">
-            <div className="raw">
-              <div className="player" onClick={ambianceAudioPlayer}>Song</div>
-              <div className="restartBtn" onClick={restart}>Restart</div>
-            </div>
+            <div className="player" onClick={ambianceAudioPlayer}>Song</div>
+            <div className="restart" onClick={restart}>Restart</div>
           </div>
         )}
         <Game />
