@@ -24,6 +24,7 @@ const Left = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
   @media only screen and (max-width: 768px) {
     justify-content: center;
   }
@@ -122,6 +123,9 @@ const Contact = () => {
         (result) => {
           console.log(result.text);
           setSuccess(true);
+          setTimeout(() => {
+            setSuccess(null);
+          }, 7000);
         },
         (error) => {
           console.log(error.text);
