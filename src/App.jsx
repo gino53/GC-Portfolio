@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import "../style.css";
 import Home from "./components/home/Home.jsx";
@@ -11,6 +11,7 @@ const Container = styled.div`
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-y: hidden;
+  overflow-x: hidden;
   scrollbar-width: none;
   color: white;
   background-color: #d3b6a5;
@@ -20,27 +21,6 @@ const Container = styled.div`
 `;
 
 function App() {
-  useEffect(() => {
-    const bloqueScroll = (event) => {
-      event.preventDefault();
-    };
-
-    const scroll = (enable) => {
-      const container = document.getElementById("container");
-      if (enable) {
-        container.addEventListener("wheel", bloqueScroll, { passive: false });
-      } else {
-        container.removeEventListener("wheel", bloqueScroll);
-      }
-    };
-
-    scroll(true);
-
-    return () => {
-      scroll(false);
-    };
-  }, []);
-
   return (
     <Container id="container">
       <Home />

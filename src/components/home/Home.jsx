@@ -14,10 +14,6 @@ const Section = styled.div`
   align-items: center;
   height: 100vh;
   scroll-snap-align: center;
-
-  @media only screen and (max-width: 768px) {
-    height: 200vh;
-  }
 `;
 
 const Container = styled.div`
@@ -27,9 +23,8 @@ const Container = styled.div`
   height: 100%;
   scroll-snap-align: center;
 
-  @media only screen and (max-width: 768px) {
-    flex-direction: column;
-    justify-content: center;
+  @media only screen and (max-width: 1440px) {
+    flex-direction: column-reverse;
   }
 `;
 
@@ -38,10 +33,11 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  height: 1000px;
 
-  @media only screen and (max-width: 768px) {
-    flex: 1;
-    align-items: center;
+  @media only screen and (max-width: 1440px) {
+    display: none;
   }
 `;
 
@@ -57,9 +53,10 @@ const Right = styled.div`
   padding: 30px;
   border: #f6e6db solid 5px;
   border-right: none;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1440px) {
     flex: 1;
-    width: 100%;
+    align-items: center;
+    border: none;
   }
 `;
 
@@ -69,7 +66,7 @@ const Title = styled.h1`
   font-family: cursive;
   text-align: end;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1440px) {
     text-align: center;
   }
 `;
@@ -82,7 +79,7 @@ const Description = styled.p`
   text-align: end;
   color: #683022;
   font-size: 24px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1440px) {
     padding: 20px;
     text-align: center;
   }
@@ -115,9 +112,14 @@ const Intro = styled.div`
   top: 0;
   bottom: 0;
   display: flex;
-  align-items: start;
+  align-items: center;
   margin: auto;
   background-color: #f6e6db;
+
+  @media (max-width: 1440px) {
+    flex-direction: column;
+    align-items: end;
+  }
 `;
 
 const Text = styled.p`
@@ -127,6 +129,21 @@ const Text = styled.p`
   color: #683022;
   font-family: cursive;
   z-index: 1;
+
+  @media (max-width: 1440px) {
+    position: relative;
+    top: 200px;
+  }
+`;
+
+const DeskContainer = styled.div`
+  display: none;
+
+  @media (max-width: 1440px) {
+    display: block;
+    width: 100%;
+    height: 200px;
+  }
 `;
 
 const CloseBtn = styled.button`
@@ -139,6 +156,11 @@ const CloseBtn = styled.button`
   font-size: x-large;
   cursor: pointer;
   z-index: 1;
+
+  @media (max-width: 1440px) {
+    position: relative;
+    top: -360px;
+  }
 `;
 
 const Home = () => {
@@ -152,21 +174,19 @@ const Home = () => {
     setIsDivOpen(false);
   };
 
-  const guitare = useGLTF('https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/guitar/model.gltf')
-
   return (
     <Section id="home">
       <Navbar />
       <Container>
         <Left>
-          <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }} style={{ width: '100%', height: '1024px' }}>
+          <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }}>
             <Desk />
           </Canvas>
         </Left>
         <Right>
           <Title>Good morning. Bonjour. Buongiorno. Привет.</Title>
-          <Subtitle>Welcome to my portfolio</Subtitle>
-          <Description>I enjoy creating websites, 3D experiences and music.</Description>
+          <Subtitle>Welcome, I am Gino</Subtitle>
+          <Description>I enjoy creating websites, 3D experiences and music</Description>
           <OpenBtn onClick={handleButtonClick}>Learn More</OpenBtn>
           {isDivOpen && (
             <Intro>
@@ -179,17 +199,11 @@ const Home = () => {
                 I love exploring different musical genres and creating original compositions.
                 This musical creativity is reflected in my approach to web development, where I always seek to bring an artistic touch to my projects.
               </Text>
-              <Canvas camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }} style={{ position: "absolute", top: 0, left: 0 }}>
-                <PresentationControls global rotation={[0.13, 0.1, 0]} polar={[0.2, 0.2]} azimuth={[- 1, 0.75]} config={{ mass: 2, tension: 400 }} snap={{ mass: 4, tension: 400 }}>
-                  <Float rotationIntensity={1}>
-                    <ambientLight intensity={1} />
-                    <primitive object={guitare.scene} position={[-1, -3, 0]} rotation={[-1, 0, 0.5]} scale={[4.5, 4.5, 4.5]} />
-                  </Float>
-                </PresentationControls>
-                <Sparkles count={100} scale={2 * 5} size={10} position-y={-5.8} speed={0.4} color={"#441a10"} />
-                <ContactShadows position-y={-4} opacity={0.7} scale={10} blur={2.4} />
-                <Effects />
-              </Canvas>
+              <DeskContainer>
+                <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }} style={{ width: '100%', height: '1024px' }}>
+                  <Desk />
+                </Canvas>
+              </DeskContainer>
               <CloseBtn onClick={handleCloseClick}><FaTimes /></CloseBtn>
             </Intro>
           )}

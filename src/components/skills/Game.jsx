@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { KeyboardControls, Sky } from "@react-three/drei"
-import { Physics } from '@react-three/rapier'
-import Lights from './Lights.jsx'
-import Level from './Level.jsx'
-import Player from './Player.jsx'
+import { useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { KeyboardControls, Sky } from "@react-three/drei";
+import { Physics } from '@react-three/rapier';
+import Lights from './Lights.jsx';
+import Level from './Level.jsx';
+import Player from './Player.jsx';
 
 const Game = () => {
     useEffect(() => {

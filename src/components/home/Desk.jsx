@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Html, PresentationControls, useGLTF, Float, ContactShadows } from '@react-three/drei'
+import Effects from './Effects';
 
 const Desk = () => {
     const computer = useGLTF("https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf")
@@ -32,7 +33,7 @@ const Desk = () => {
                     <pointLight position={[14, 30, 10]} />
                     <rectAreaLight width={2.5} height={1.65} intensity={55} color={'#acb2b2'} rotation={[-0.1, Math.PI, 0]} position={[-1.4, 1, -1.4]} />
                     <primitive object={computer.scene} position={[-1.8, -3, 0]} rotation-y={[0.2]} scale={[2, 2, 2]} onClick={computerAudioPlayer}>
-                        <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.82, -1.4]} rotation-x={-0.256}>
+                        <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.56, - 1.4]} rotation-x={-0.256}>
                             <iframe src='https://marble-r.vercel.app/' />
                         </Html>
                     </primitive>
@@ -41,6 +42,7 @@ const Desk = () => {
                 </Float>
             </PresentationControls>
             <ContactShadows position-y={-4} opacity={0.7} scale={12} blur={2.4} />
+            <Effects />
         </>
     );
 };

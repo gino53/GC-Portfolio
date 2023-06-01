@@ -60,7 +60,7 @@ body,
 
 .parallax-effect-threejs {
   position: relative;
-  left: 70px;
+  left: 30px;
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
@@ -79,7 +79,7 @@ body,
 
 .parallax-effect-google {
   position: relative;
-  left: 70px;
+  left: 30px;
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
@@ -97,7 +97,7 @@ body,
 
 .parallax-effect-openclassrooms {
   position: relative;
-  left: 70px;
+  left: 30px;
   width: 100%;
   transform-style: preserve-3d;
   transform: perspective(1000px);
