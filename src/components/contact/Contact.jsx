@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import emailjs from "@emailjs/browser";
 import styled from "styled-components";
 import Linkedin from "./Linkedin.jsx";
 import Github from "./Github.jsx";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 
 const Section = styled.div`
   height: 100vh;
@@ -12,31 +12,33 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  height: 100%;
   gap: 50px;
 `;
 
 const Left = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
   @media only screen and (max-width: 768px) {
     justify-content: center;
   }
 `;
 
 const Title = styled.h1`
-  font-weight: 200;
+  color: #f6e6db;
+  font-size: 42px;
+  font-family: cursive;
 `;
 
 const Form = styled.form`
-  width: 500px;
   display: flex;
   flex-direction: column;
+  width: 500px;
   gap: 25px;
 
   @media only screen and (max-width: 768px) {
@@ -46,30 +48,56 @@ const Form = styled.form`
 
 const Input = styled.input`
   padding: 20px;
-  background-color: #e8e6e6;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f6e6db;
+  color: #683022;
+  font-family: cursive;
+  font-weight: bold;
 `;
 
 const TextArea = styled.textarea`
   padding: 20px;
   border: none;
-  border-radius: 5px;
-  background-color: #e8e6e6;
+  border-radius: 10px;
+  outline: none;
+  background-color: #f6e6db;
+  color: #683022;
+  font-family: cursive;
+  font-weight: bold;
 `;
 
 const Button = styled.button`
-  background-color: #da4ea2;
-  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
   border: none;
-  font-weight: bold;
+  border-radius: 10px;
+  background-color: #f6e6db;
+  color: #683022;
+  font-size: medium;
+  font-family: cursive;
+  transition: 0.5s;
   cursor: pointer;
-  border-radius: 5px;
-  padding: 20px;
+
+  &:hover {
+    background-color: #683022;
+    color: #f6e6db;
+  }
+`;
+
+const Success = styled.h1`
+  color: #f6e6db;
+  font-family: cursive;
 `;
 
 const Right = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media only screen and (max-width: 768px) {
     display: none;
@@ -85,10 +113,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_id",
-        "template_id",
+        "service_3tw347m",
+        "template_cxi7qcz",
         ref.current,
-        "public_key"
+        "U4Gw4uXEQulSdIF4g"
       )
       .then(
         (result) => {
@@ -101,37 +129,35 @@ const Contact = () => {
         }
       );
   };
+
   return (
     <Section id="contact">
       <Container>
         <Left>
           <Form ref={ref} onSubmit={handleSubmit}>
-            <Title>Contact Us</Title>
+            <Title>Contact Me</Title>
             <Input placeholder="Name" name="name" />
             <Input placeholder="Email" name="email" />
-            <TextArea
-              placeholder="Write your message"
-              name="message"
-              rows={10}
-            />
+            <TextArea placeholder="Write your message" name="message" rows={10} />
             <Button type="submit">Send</Button>
             {success &&
-              "Your message has been sent. We'll get back to you soon :)"}
+              <Success>Your message has been sent 😁</Success>
+            }
           </Form>
-          <Canvas camera={{ position: [5, 5, 5], fov: 25 }} style={{ width: '80px', height: '150px' }} >
+        </Left>
+        <Right>
+          <Canvas camera={{ position: [5, 5, 5], fov: 25 }} style={{ width: '330px', height: '330px' }} >
             <ambientLight intensity={0.5} />
             <directionalLight position={[3, 2, 1]} />
             <Linkedin />
             <OrbitControls enableRotate={false} enableZoom={false} autoRotate />
           </Canvas>
-          <Canvas camera={{ position: [5, 5, 5], fov: 25 }} style={{ width: '80px', height: '150px' }} >
+          <Canvas camera={{ position: [5, 5, 5], fov: 25 }} style={{ width: '330px', height: '330px' }} >
             <ambientLight intensity={0.5} />
             <directionalLight position={[3, 2, 1]} />
             <Github />
             <OrbitControls enableRotate={false} enableZoom={false} autoRotate />
           </Canvas>
-        </Left>
-        <Right>
         </Right>
       </Container>
     </Section>

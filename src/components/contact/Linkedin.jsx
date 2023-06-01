@@ -1,7 +1,7 @@
 import { TextureLoader } from 'three';
 
 const Linkedin = () => {
-    const texture = new TextureLoader().load('./img/Linkedin.png');
+    const texture = new TextureLoader().load('./img/icons/Linkedin.png');
 
     const handleClick = () => {
         window.open('https://www.linkedin.com/in/gino-castagna/', '_blank');
@@ -10,7 +10,7 @@ const Linkedin = () => {
     return (
         <mesh onClick={handleClick} onPointerEnter={() => { document.body.style.cursor = 'pointer' }} onPointerLeave={() => { document.body.style.cursor = 'default' }}>
             <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color="white" map={texture} />
+            <meshStandardMaterial color="#f6e6db" map={texture} />
         </mesh>
     );
 };
