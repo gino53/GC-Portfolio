@@ -5,7 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import styled from "styled-components";
 import Navbar from "../navbar/Navbar.jsx";
 import Desk from "./Desk.jsx";
-import Effects from "../Effects.jsx"
+import Effects from "./Effects.jsx"
 
 const Section = styled.div`
   display: flex;

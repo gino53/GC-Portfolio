@@ -31,8 +31,8 @@ const Desk = () => {
                     <ambientLight intensity={0.2} />
                     <pointLight position={[14, 30, 10]} />
                     <rectAreaLight width={2.5} height={1.65} intensity={55} color={'#acb2b2'} rotation={[-0.1, Math.PI, 0]} position={[-1.4, 1, -1.4]} />
-                    <primitive object={computer.scene} position={[-1.8, -2, 0]} rotation-y={[0.2]} scale={[2, 2, 2]} onClick={computerAudioPlayer}>
-                        <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.56, -1.4]} rotation-x={-0.256}>
+                    <primitive object={computer.scene} position={[-1.8, -3, 0]} rotation-y={[0.2]} scale={[2, 2, 2]} onClick={computerAudioPlayer}>
+                        <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.82, -1.4]} rotation-x={-0.256}>
                             <iframe src='https://marble-r.vercel.app/' />
                         </Html>
                     </primitive>
