@@ -32,12 +32,16 @@ const Desk = () => {
                     <pointLight position={[14, 30, 10]} />
                     <rectAreaLight width={2.5} height={1.65} intensity={55} color={'#acb2b2'} rotation={[-0.1, Math.PI, 0]} position={[-1.4, 1, -1.4]} />
                     <primitive object={computer.scene} position={[-1.8, -3, 0]} rotation-y={[0.2]} scale={[2, 2, 2]} onClick={computerAudioPlayer}>
-                        <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.56, - 1.4]} rotation-x={-0.256}>
+                        <Html transform wrapperClass='htmlComputer' distanceFactor={1.17} position={[0, 1.56, -1.4]} rotation-x={-0.256}>
                             <iframe src='https://marble-r.vercel.app/' />
                         </Html>
                     </primitive>
                     <primitive object={headphone.scene} position={[3.3, 0, -0.6]} scale={[1.8, 1.2, 1.2]} onClick={dogAudioPlayer} />
-                    <primitive object={dog.scene} position={[3.3, -1, 0]} scale={[2, 2, 2]} onClick={dogAudioPlayer} />
+                    <primitive object={dog.scene} position={[3.3, -1, 0]} scale={[2, 2, 2]} onClick={dogAudioPlayer}>
+                        <Html transform distanceFactor={1.17} position={[0, 0.4, 0.34]} rotation-x={-0.256}>
+                            <h2 style={{ textAlign: 'center', color: '#f6e6db' }} onClick={dogAudioPlayer}>CLICK ME</h2>
+                        </Html>
+                    </primitive>
                 </Float>
             </PresentationControls>
             <ContactShadows position-y={-4} opacity={0.7} scale={12} blur={2.4} />
