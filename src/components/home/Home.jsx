@@ -55,7 +55,7 @@ const Right = styled.div`
   height: 70%;
   gap: 20px;
   padding: 30px;
-  border: whitesmoke solid 5px;
+  border: #f6e6db solid 5px;
   border-right: none;
   @media only screen and (max-width: 768px) {
     flex: 1;
@@ -96,7 +96,7 @@ const OpenBtn = styled.button`
   border: none;
   border-radius: 10px;
   background-color: #f6e6db;
-  color: #333;
+  color: #683022;
   font-size: medium;
   font-family: 'Permanent Marker', cursive;
   transition: 0.5s;
@@ -104,7 +104,7 @@ const OpenBtn = styled.button`
 
   &:hover {
     background-color: #683022;
-    color: whitesmoke;
+    color: #f6e6db;
   }
 `;
 
@@ -124,7 +124,7 @@ const Text = styled.p`
   padding: 30px;
   line-height: 3;
   text-align: center;
-  color: #333;
+  color: #683022;
   font-family: 'Permanent Marker', cursive;
   z-index: 1;
 `;
@@ -135,7 +135,7 @@ const CloseBtn = styled.button`
   padding: 10px;
   border: none;
   background-color: #f6e6db;
-  color: #333;
+  color: #683022;
   font-size: x-large;
   cursor: pointer;
   z-index: 1;
@@ -159,7 +159,7 @@ const Home = () => {
       <Navbar />
       <Container>
         <Left>
-          <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }}>
+          <Canvas flat dpr={[1, 2]} camera={{ fov: 45, near: 0.1, far: 2000, position: [-3, 1.5, 15] }} style={{ width: '100%', height: '1024px' }}>
             <Desk />
           </Canvas>
         </Left>
@@ -186,7 +186,7 @@ const Home = () => {
                     <primitive object={guitare.scene} position={[-1, -3, 0]} rotation={[-1, 0, 0.5]} scale={[4.5, 4.5, 4.5]} />
                   </Float>
                 </PresentationControls>
-                <Sparkles count={100} scale={2 * 5} size={10} position-y={-5.8} speed={0.4} color={"black"} />
+                <Sparkles count={100} scale={2 * 5} size={10} position-y={-5.8} speed={0.4} color={"#441a10"} />
                 <ContactShadows position-y={-4} opacity={0.7} scale={10} blur={2.4} />
                 <Effects />
               </Canvas>

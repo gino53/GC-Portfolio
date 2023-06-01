@@ -16,9 +16,6 @@ const Section = styled.div`
   justify-content: center;
   height: 100vh;
   scroll-snap-align: center;
-  color: black;
-  font-size: 14px;
-  font-weight: 300;
 `;
 
 const Container = styled.div`
@@ -55,7 +52,7 @@ const ListItem = styled.li`
   color: transparent;
   font-size: 90px;
   font-weight: bold;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px #f5e4dc;
   cursor: pointer;
 
   @media only screen and (max-width: 768px) {
@@ -72,7 +69,7 @@ const ListItem = styled.li`
     width: 0px;
     overflow: hidden;
     white-space: nowrap;
-    color: #f5e4dc;
+    color: #683022;
   }
 
   &:hover {
