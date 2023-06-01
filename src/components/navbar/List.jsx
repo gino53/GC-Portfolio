@@ -22,7 +22,7 @@ const ListStyle = styled.button`
 `;
 
 const List = () => {
-    const menuItems = ['Home', 'Skills', 'Certificates', 'Contact'];
+    const menuItems = ['Home', 'Experiences', 'Certificates', 'Contact'];
     const [activeSection, setActiveSection] = useState("home");
 
     const handleClick = (sectionId) => {

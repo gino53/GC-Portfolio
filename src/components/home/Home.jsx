@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { ContactShadows, Float, PresentationControls, Sparkles, useGLTF } from "@react-three/drei";
 import { FaTimes } from 'react-icons/fa';
 import styled from "styled-components";
 import Navbar from "../navbar/Navbar.jsx";
 import Desk from "./Desk.jsx";
-import Effects from "./Effects.jsx"
 
 const Section = styled.div`
   display: flex;
@@ -34,7 +32,7 @@ const Left = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 1000px;
+  height: 100%;
 
   @media only screen and (max-width: 1440px) {
     display: none;

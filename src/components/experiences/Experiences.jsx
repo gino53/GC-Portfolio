@@ -31,7 +31,7 @@ const Container = styled.div`
   }
 `;
 
-const Skills = () => {
+const Experiences = () => {
   const [ambianceAudio] = useState(() => new Audio('./song/ambiance.mp3'));
   let isPlaying = false;
   const ambianceAudioPlayer = () => {
@@ -69,20 +69,20 @@ const Skills = () => {
     };
 
     const observer = new IntersectionObserver(handleIntersection, options);
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      observer.observe(skillsSection);
+    const experiencesSection = document.getElementById('experiences');
+    if (experiencesSection) {
+      observer.observe(experiencesSection);
     }
 
     return () => {
-      if (skillsSection) {
-        observer.unobserve(skillsSection);
+      if (experiencesSection) {
+        observer.unobserve(experiencesSection);
       }
     };
   }, []);
 
   return (
-    <Section id="skills">
+    <Section id="experiences">
       <Container>
         {showInterface && (
           <div className="interface">
@@ -96,4 +96,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default Experiences;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "../style.css";
 import Home from "./components/home/Home.jsx";
-import Skills from "./components/skills/Skills.jsx";
+import Experiences from "./components/experiences/Experiences.jsx";
 import Certificates from "./components/certificates/Certificates.jsx";
 import Contact from "./components/contact/Contact.jsx";
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <Container id="container">
       <Home />
-      <Skills />
+      <Experiences/>
       <Certificates />
       <Contact />
     </Container>

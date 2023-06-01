@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Html, PresentationControls, useGLTF, Float, ContactShadows } from '@react-three/drei'
-import Effects from './Effects';
 
 const Desk = () => {
     const computer = useGLTF("https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf")
@@ -42,7 +41,6 @@ const Desk = () => {
                 </Float>
             </PresentationControls>
             <ContactShadows position-y={-4} opacity={0.7} scale={12} blur={2.4} />
-            <Effects />
         </>
     );
 };
