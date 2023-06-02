@@ -17,6 +17,10 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   gap: 50px;
+
+  @media only screen and (max-width: 768px) {
+    gap: 0px;
+  }
 `;
 
 const Left = styled.div`
@@ -41,6 +45,10 @@ const Form = styled.form`
   flex-direction: column;
   width: 500px;
   gap: 25px;
+
+  @media only screen and (max-width: 768px) {
+    width: 300px;
+  }
 `;
 
 const Input = styled.input`
@@ -103,6 +111,10 @@ const Right = styled.div`
     height: 600px;
   }
 
+  @media only screen and (max-width: 768px) {
+    width: 400px;
+    height: 400px;
+  }
 `;
 
 const Contact = () => {

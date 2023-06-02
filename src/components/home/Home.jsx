@@ -142,6 +142,11 @@ const DeskContainer = styled.div`
     width: 100%;
     height: 800px;
   }
+
+  @media (max-width: 768px) {
+    position: relative;
+    top: 50px;
+  }
 `;
 
 const CloseBtn = styled.button`
