@@ -10,12 +10,11 @@ const Container = styled.div`
   height: 100vh;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  overflow-y: hidden;
-  overflow-x: hidden;
+  overflow-y: auto;
   scrollbar-width: none;
   color: white;
   background-color: #d3b6a5;
-  &::-webkit-scrollbar {
+  &::-webkit-scrollbar{
     display: none;
   }
 `;
