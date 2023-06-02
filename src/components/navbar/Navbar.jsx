@@ -34,20 +34,29 @@ const ListContainer = styled.div`
   }
 `;
 
-const ListContainer425 = styled.div`
+const Menu = styled.div`
   display: none;
 
   @media only screen and (max-width: 425px) {
     position: fixed;
-    top: 100px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
-    gap: 25px;
+    height: 200vh;
     background-color: #d3b6a5;
+  }
+`;
+
+const ListContainer425 = styled.div`
+  display: none;
+
+  @media only screen and (max-width: 425px) {
+    position: relative;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
   }
 `;
 
@@ -71,7 +80,7 @@ const ListStyle = styled.button`
   }
 `;
 
-const Button = styled.button`
+const ButtonMenu = styled.button`
   display: none;
 
   @media only screen and (max-width: 425px) {
@@ -89,16 +98,6 @@ const Button = styled.button`
 `;
 
 const Navbar = () => {
-  const [isDivOpen, setIsDivOpen] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsDivOpen(true);
-  };
-
-  const handleCloseClick = () => {
-    setIsDivOpen(false);
-  };
-
   const menuItems = ['Home', 'Experiences', 'Certificates', 'Contact'];
   const [activeSection, setActiveSection] = useState("home");
 
@@ -108,6 +107,16 @@ const Navbar = () => {
       section.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
     }
+  };
+
+  const [isDivOpen, setIsDivOpen] = useState(false);
+  const handleOpenClick = () => {
+    setIsDivOpen(true);
+    window.parent.postMessage('disableIframe', '*');
+  };
+  const handleCloseClick = () => {
+    setIsDivOpen(false);
+    window.parent.postMessage('enableIframe', '*');
   };
 
   return (
@@ -125,21 +134,23 @@ const Navbar = () => {
             );
           })}
         </ListContainer>
-        <Button onClick={handleButtonClick}>
+        <ButtonMenu onClick={handleOpenClick}>
           <HiMenuAlt3 />
-        </Button>
+        </ButtonMenu>
         {isDivOpen && (
-          <ListContainer425>
-            {menuItems.map((item) => {
-              const sectionId = item.toLowerCase();
-              const isActive = sectionId === activeSection;
-              return (
-                <ListStyle key={item} isActive={isActive} onClick={() => { handleClick(sectionId); handleCloseClick(); }}>
-                  {item}
-                </ListStyle>
-              );
-            })}
-          </ListContainer425>
+          <Menu>
+            <ListContainer425>
+              {menuItems.map((item) => {
+                const sectionId = item.toLowerCase();
+                const isActive = sectionId === activeSection;
+                return (
+                  <ListStyle key={item} isActive={isActive} onClick={() => { handleClick(sectionId); handleCloseClick(); }}>
+                    {item}
+                  </ListStyle>
+                );
+              })}
+            </ListContainer425>
+          </Menu>
         )}
       </Container>
     </Section>

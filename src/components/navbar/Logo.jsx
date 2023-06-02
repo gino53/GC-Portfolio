@@ -37,7 +37,7 @@ const Logo = () => {
   };
 
   return (
-    <Canvas style={{ width: '100px', height: '100px' }}>
+    <Canvas style={{ width: '100px', height: '100px', zIndex: '1' }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Center>
