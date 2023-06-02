@@ -132,6 +132,10 @@ const Text = styled.p`
     position: relative;
     top: 200px;
   }
+
+  @media only screen and (max-width: 425px) {
+    line-height: 2;
+  }
 `;
 
 const DeskContainer = styled.div`
@@ -147,6 +151,11 @@ const DeskContainer = styled.div`
     position: relative;
     top: 50px;
   }
+
+  @media only screen and (max-width: 425px) {
+    top: 130px;
+    height: 400px;
+  }
 `;
 
 const CloseBtn = styled.button`
@@ -161,12 +170,8 @@ const CloseBtn = styled.button`
   z-index: 1;
 
   @media (max-width: 1440px) {
-    position: relative;
-    top: -850px;
-  }
-
-  @media (max-width: 1024px) {
-    top: -950px;
+    position: absolute;
+    top: 150px;
   }
 `;
 

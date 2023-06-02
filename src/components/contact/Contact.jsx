@@ -21,6 +21,10 @@ const Container = styled.div`
   @media only screen and (max-width: 768px) {
     gap: 0px;
   }
+
+  @media only screen and (max-width: 425px) {
+    flex-direction: column;
+  }
 `;
 
 const Left = styled.div`
@@ -32,12 +36,20 @@ const Left = styled.div`
   @media only screen and (max-width: 1024px) {
     flex: 2;
   }
+
+  @media only screen and (max-width: 425px) {
+    align-items: end;
+  }
 `;
 
 const Title = styled.h1`
   color: #f6e6db;
   font-size: 42px;
   font-family: cursive;
+
+  @media only screen and (max-width: 425px) {
+    text-align: center;
+  }
 `;
 
 const Form = styled.form`
@@ -114,6 +126,10 @@ const Right = styled.div`
   @media only screen and (max-width: 768px) {
     width: 400px;
     height: 400px;
+  }
+
+  @media only screen and (max-width: 425px) {
+    flex-direction: row;
   }
 `;
 

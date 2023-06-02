@@ -72,6 +72,10 @@ body,
     top: -150px;
     left: 270px;
   }
+
+  @media only screen and (max-width: 425px) {
+    left: 35px;
+  }
 }
 .threejs {
   position: relative;
@@ -80,6 +84,10 @@ body,
   width: 55%;
   margin-left: 35%;
   transform: translateZ(60px) scale(0.8);
+
+  @media only screen and (max-width: 425px) {
+    left: 10px;
+  }
 }
 
 .parallax-effect-openclassrooms {
@@ -96,6 +104,10 @@ body,
     top: -150px;
     left: 270px;
   }
+
+  @media only screen and (max-width: 425px) {
+    left: 45px;
+  }
 }
 .openclassrooms {
   position: relative;
@@ -103,6 +115,11 @@ body,
   width: 65%;
   margin-left: 50%;
   transform: translateZ(40px) scale(0.4);
+
+  @media only screen and (max-width: 425px) {
+    top: -120px;
+    left: -20px;
+  }
 }
 
 .parallax-effect-google {
@@ -119,6 +136,10 @@ body,
     top: -150px;
     left: 270px;
   }
+
+  @media only screen and (max-width: 425px) {
+    left: 45px;
+  }
 }
 .google {
   position: relative;
@@ -126,4 +147,9 @@ body,
   left: -160px;
   width: 65%;
   transform: translateZ(40px) scale(0.5);
+
+  @media only screen and (max-width: 425px) {
+    top: -110px;
+    left: -80px;
+  }
 }

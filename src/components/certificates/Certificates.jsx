@@ -89,6 +89,10 @@ const Right = styled.div`
   @media only screen and (max-width: 1024px) {
     width: 60%;
   }
+
+  @media only screen and (max-width: 425px) {
+    width: 90%;
+  }
 `;
 
 const Certificates = () => {
