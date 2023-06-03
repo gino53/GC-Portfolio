@@ -10,7 +10,7 @@ const Container = styled.div`
   height: 100vh;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  overflow-y: auto;
+  overflow-y: hidden;
   scrollbar-width: none;
   color: white;
   background-color: #d3b6a5;
