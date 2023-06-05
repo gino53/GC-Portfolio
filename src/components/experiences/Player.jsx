@@ -140,8 +140,8 @@ export default function Player() {
             <meshStandardMaterial flatShading>
                 <RenderTexture attach="map">
                     <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-                    <color attach="background" args={["#ffffff"]} />
-                    <Text ref={textRef} fontSize={3} color="#555">
+                    <color attach="background" args={["#683022"]} />
+                    <Text ref={textRef} fontSize={3} color="#d3b6a5">
                         GC
                     </Text>
                 </RenderTexture>

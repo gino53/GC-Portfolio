@@ -3,7 +3,7 @@ import { TextureLoader } from 'three';
 import { useEffect, useRef, useState } from 'react';
 import { Html, Sparkles, Text, Text3D, useGLTF } from '@react-three/drei';
 import { RigidBody } from '@react-three/rapier';
-import Screen from './Screen';
+import Screens from './Screens.jsx';
 
 THREE.ColorManagement.legacyMode = false
 
@@ -270,7 +270,7 @@ function SceneWorks() {
         </RigidBody>
 
         <RigidBody type='fixed' restitution={0.2} friction={0}>
-            <Screen />
+            <Screens />
         </RigidBody>
 
         <RigidBody restitution={0.4} onCollisionEnter={hitAudioPlayer}>
